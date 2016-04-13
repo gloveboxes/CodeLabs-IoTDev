@@ -94,11 +94,7 @@ In this task, you'll connect to your device and explore the web management inter
 
 	_Windows Device Portal_
 
-1. In the **Windows Device Portal** home page, enter a new device name in the **Preferences** section.
-
-	![Change your device name](Images/ex1task1-device-portal-rename.png?raw=true "Change your device name")
-
-	_Change your device name_
+1. For now, just explore and don't change any settings.
 
 <a name="Ex1Task2"></a>
 #### Task 2 - Verify the Windows IoT Remote Client connection  ####
