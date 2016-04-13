@@ -67,8 +67,6 @@ Estimated time to complete this module: **60 minutes**
 The Raspberry Pi will be connected to the development PC through a wired Ethernet connection. 
 This connection is used both for deployment and debugging as well as passing through internet requests from the Raspberry Pi when [Internet Connection Sharing](http://ms-iot.github.io/content/en-US/win10/ConnectToDevice.htm) is enabled on the PC.
 
-The **Windows Device Portal** provides basic configuration and device management capabilities, in addition to advanced diagnostic tools to help you troubleshoot and view the real time performance of your Windows IoT Device.
-
 <a name="Ex1Task1"></a>
 #### Task 1 - Identifying the device using IoT Core Dashboard ####
 
