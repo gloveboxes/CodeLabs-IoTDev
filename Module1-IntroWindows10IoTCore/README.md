@@ -67,18 +67,17 @@ Estimated time to complete this module: **60 minutes**
 
 The Raspberry Pi 3 will be connected to the development PC through a wired Ethernet connection. This connection is used for deployment and debugging. The WiFi connection will be used for connecting the Raspberry Pi to the Internet. As a result, the Pi will have two IP Addresses. **The address to use for deploying and for otherwise accessing the Pi from your PC is the Wired Ethernet address, not the IoT-Lab WiFi address.**
 
-The **Windows Device Portal** provides basic configuration and device management capabilities, in addition to advanced diagnostic tools to help you troubleshoot and view the real time performance of your Windows IoT Device. **In the IoT Labs at Build, the device explorer shows the WiFi address for the Pi, and so you will not use it directly to configure the device.**
+The **Windows Device Portal** provides basic configuration and device management capabilities, in addition to advanced diagnostic tools to help you troubleshoot and view the real time performance of your Windows IoT Device.
 
 In this exercise, you'll configure your Raspberry Pi board by connecting through the **Windows Device Portal** to set a new name and configure WiFi connectivity.
 
 <a name="Ex1Task1"></a>
 #### Task 1 - Identifying the device using IoT Core Dashboard ####
 
-In this task, you'll connect to your device and update its name through the web interface.
+In this task, you'll connect to your device and explore the web management interface.
 
-> **Note:** For the Build 2016 labs, the device name and WiFi setup was completed before you started this lab. Please follow the steps below to verify and update as necessary. Do not change the device password. 
 
-1. Normally, you would launch the **Windows 10 IoT Core Dashboard**, go to **My devices** and click the **Open in Device Portal** icon of your device name. **For Build 2016 labs, please open the portal to view the device if you want, and verify that the PC can see it. Then open your browser, and looking at the display on the Pi, use the Ethernet IP address and port 8080 to access it directly.**
+1. Launch the **Windows 10 IoT Core Dashboard**, go to **My devices** and click the **Open in Device Portal** icon of your device name. 
 
 	![Windows 10 IoT Core Dashboard](Images/ex1task1-watcher.png?raw=true "Windows 10 IoT Core Dashboard")
 
@@ -246,7 +245,7 @@ To do this, we'll create a new project.
                   Unchecked="ToggleLed_Unchecked" />
     ````
 
-1. Next, you need some code to light up the LED. However, before that, you'll need to add a reference to the IoT UWP extension library to get access to the **Windows.Devices.Gpio** namespace. As before, use the **Project - Add Reference menu** to add the extension. Be sure to check it in the dialog, not just select it. If you have more than one version listed, select the one with the highest number. In a real application, you'll want to keep this in sync with the version of Windows on the device so that you have access to all of the latest features. For Build 2016, **this is the 10586 version.**
+1. Next, you need some code to light up the LED. However, before that, you'll need to add a reference to the IoT UWP extension library to get access to the **Windows.Devices.Gpio** namespace. As before, use the **Project - Add Reference menu** to add the extension. Be sure to check it in the dialog, not just select it. If you have more than one version listed, select the one with the highest number. In a real application, you'll want to keep this in sync with the version of Windows on the device so that you have access to all of the latest features.
 
 ![Add IoT Extension SDK](Images/add-iot-extension.png)
 
