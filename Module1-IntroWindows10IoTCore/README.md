@@ -64,11 +64,10 @@ Estimated time to complete this module: **60 minutes**
 <a name="Exercise1"></a>
 ### Exercise 1: Connecting and configuring your device ###
 
-The Raspberry Pi 3 will be connected to the development PC through a wired Ethernet connection. This connection is used for deployment and debugging. The WiFi connection will be used for connecting the Raspberry Pi to the Internet. As a result, the Pi will have two IP Addresses. **The address to use for deploying and for otherwise accessing the Pi from your PC is the Wired Ethernet address, not the IoT-Lab WiFi address.**
+The Raspberry Pi will be connected to the development PC through a wired Ethernet connection. 
+This connection is used both for deployment and debugging as well as passing through internet requests from the Raspberry Pi when [Internet Connection Sharing](http://ms-iot.github.io/content/en-US/win10/ConnectToDevice.htm) is enabled on the PC.
 
 The **Windows Device Portal** provides basic configuration and device management capabilities, in addition to advanced diagnostic tools to help you troubleshoot and view the real time performance of your Windows IoT Device.
-
-In this exercise, you'll configure your Raspberry Pi board by connecting through the **Windows Device Portal** to set a new name and configure WiFi connectivity.
 
 <a name="Ex1Task1"></a>
 #### Task 1 - Identifying the device using IoT Core Dashboard ####
