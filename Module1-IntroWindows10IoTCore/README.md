@@ -37,7 +37,7 @@ The following is required to complete this module:
 
 
 
-All the source code is available on [GitHub](/Module1-IntroWindows10IoTCore/Source).
+> **Note:** The source code for this lab is available on [GitHub](/Module1-IntroWindows10IoTCore/Source).
 
 [1]: https://msdn.microsoft.com/library/windows/apps/xaml/dn706236.aspx
 [2]: https://www.visualstudio.com/products/visual-studio-community-vs
@@ -48,7 +48,6 @@ All the source code is available on [GitHub](/Module1-IntroWindows10IoTCore/Sour
 [7]: https://developer.microsoft.com/en-us/windows/iot/getstarted
 [8]: https://www.microsoft.com/store/apps/9nblggh5mnxz
 
-> **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
 
 <a name="Exercises"></a>
 ## Exercises ##
