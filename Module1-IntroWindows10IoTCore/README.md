@@ -107,24 +107,19 @@ In this task, you'll connect to your device and update its name through the web 
 	_Change your device name_
 
 <a name="Ex1Task2"></a>
-#### Task 2 - Verify the Remote Client works  ####
+#### Task 2 - Verify the Windows IoT Remote Client works  ####
 
 In this task, you will verify the "Windows IoT Core Remote Client" connection.
 
-To start press the Windows key and type “Windows IoT Core Remote Client”.
+To start press the Windows key and type “Windows IoT Core Remote Client” and run the app.
 
-It is highly likley that you will need to enter the IP address of your Raspberry Pi. Get the address of the device from the **Windows 10 IoT Core Dashboard**.
+It is  likley that you will need to enter the IP address of your Raspberry Pi. Get the address of the device from the **Windows 10 IoT Core Dashboard**.
 
 This will take a moment to connect. When it does you will see the video output of the Raspberry Pi remoted to your desktop.
 
+Minimise the remote client application when you have verified that it is working.
+
 ![Windows IoT Remote Client](Images/windows-iot-remote-client.png?raw=true "Windows IoT Remote Client")
-
-<a name="Ex1Task3"></a>
-#### Task 3 - Using the web interface to verify (or configure) screen resolution  ####
-
-1. Click **Home** in the left-hand pane.
-
-1. Scroll down to the bottom of the page and verify that the display resolution is set to 1920x1080. This is the easiest way to set the display resolution on a Windows 10 IoT Core device.
 
 <a name="Exercise2"></a>
 ### Exercise 2: Create and deploy "Hello World" UWP ###
