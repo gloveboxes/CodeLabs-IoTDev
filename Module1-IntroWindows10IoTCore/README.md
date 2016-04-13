@@ -107,7 +107,7 @@ In this task, you'll connect to your device and update its name through the web 
 	_Change your device name_
 
 <a name="Ex1Task2"></a>
-#### Task 2 - Verify the Windows IoT Remote Client works  ####
+#### Task 2 - Verify the Windows IoT Remote Client connection  ####
 
 In this task, you will verify the "Windows IoT Core Remote Client" connection.
 
@@ -214,6 +214,8 @@ In order to use remote debugging, your IoT Core device must first be connected t
 
 1. Hit **F5** to deploy and run the app. You can insert breakpoints and debug in the remote device.
 
+1. Restore the "Windows IoT RemoTe Client" app and you should see the output of your app running on the Raspberry Pi.
+
 
 <a name="Exercise3"></a>
 ### Exercise 3: Using Windows.Devices.Gpio ###
@@ -304,7 +306,7 @@ To do this, we'll create a new project.
 
 1. The code is complete. Now follow the same deployment steps you used in the previous exercise to deploy the app to the Raspberry Pi. (First, set the target to **ARM**, then select the **Remote Machine**).
 
-1. Using the mouse and display connected to the Pi, click the button on and off and look at the red LED on the board. If you want to see the debugging in action, place a breakpoint in both of the event handlers and step through when you click the button.
+1. Again from the "Windows IoT Remote Client" and using the mouse, click the button on and off and look at the red LED on the board. If you want to see the debugging in action, place a breakpoint in both of the event handlers and step through when you click the button.
 
 <a name="Exercise4"></a>
 ### Exercise 4: Programming the device I/O using the FEZ HAT###
@@ -502,7 +504,9 @@ The FEZ HAT driver includes methods to get the temperature and light levels. In 
 	}
 	````
 
-1. Hit **F5** to re-deploy the application to the device. You should see the values shown in the display connected to the device. You can see how the light percentage varies by approaching your hand to the light sensor.
+1. Hit **F5** to re-deploy the application to the device. 
+
+1. Restore the "Windows IoT Remote Client" and you should see the values shown in the display. You can see how the light percentage varies by approaching your hand to the light sensor.
 
 	> **Note:** You should set up the device deployment if you didn't continue working with the previous solution.
 
