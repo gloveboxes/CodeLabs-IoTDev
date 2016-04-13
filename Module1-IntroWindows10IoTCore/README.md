@@ -33,7 +33,7 @@ The following is required to complete this module:
 - [Raspberry PI board with Windows IoT Core image][5]
 - [GHI FEZ HAT][6] (for exercises 3 and 4)
 - [Windows 10 IoT Core Dashboard][7]
-- [Windows IoT Remote Client - (See https://developer.microsoft.com/en-us/windows/iot/win10/remotedisplay for more details)][8]
+- [Windows IoT Remote Client][8] see [Remote Display Experience](https://developer.microsoft.com/en-us/windows/iot/win10/remotedisplay)
 
 
 
