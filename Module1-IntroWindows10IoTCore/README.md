@@ -35,9 +35,9 @@ The following is required to complete this module:
 - [Windows 10 IoT Core Dashboard][7]
 - [Windows IoT Remote Client][8]
 
-All have been included in the room for the Build 2016 Code Labs.
 
-All of the GitHub files for this lab are available locally in c:\CodeLabs-IoTDev . Be sure to log out at the end of the session so the files can be reset from GitHub.
+
+All the source code is available on [GitHub](/Module1-IntroWindows10IoTCore/Source).
 
 [1]: https://msdn.microsoft.com/library/windows/apps/xaml/dn706236.aspx
 [2]: https://www.visualstudio.com/products/visual-studio-community-vs
