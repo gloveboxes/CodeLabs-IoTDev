@@ -32,6 +32,8 @@ The following is required to complete this module:
 - [Windows IoT Core Project Templates][4]
 - [Raspberry PI board with Windows IoT Core image][5]
 - [GHI FEZ HAT][6] (for exercises 3 and 4)
+- [Windows 10 IoT Core Dashboard][7]
+- [Windows IoT Remote Client][8]
 
 All have been included in the room for the Build 2016 Code Labs.
 
@@ -43,6 +45,8 @@ All of the GitHub files for this lab are available locally in c:\CodeLabs-IoTDev
 [4]: https://visualstudiogallery.msdn.microsoft.com/55b357e1-a533-43ad-82a5-a88ac4b01dec
 [5]: https://ms-iot.github.io/content/en-US/win10/RPI.htm
 [6]: https://www.ghielectronics.com/catalog/product/500
+[7]: https://developer.microsoft.com/en-us/windows/iot/getstarted
+[8]: https://www.microsoft.com/store/apps/9nblggh5mnxz
 
 > **Note:** You can take advantage of the [Visual Studio Dev Essentials]( https://www.visualstudio.com/en-us/products/visual-studio-dev-essentials-vs.aspx) subscription in order to get everything you need to build and deploy your app on any platform.
 
@@ -81,7 +85,7 @@ In this task, you'll connect to your device and update its name through the web 
 
 	_Windows 10 IoT Core Dashboard_
 
-> **Note:** You can also launch the _Device Portal_ by browsing the _IP address_ and adding **:8080**. This is the required approach for Build 2016 labs in-room.
+> **Note:** You can also launch the _Device Portal_ by browsing the _IP address_ and adding **:8080**.
 
 
 1. In the credentials dialog, use the default username and password. Username: _Administrator_ Password: _p@ssw0rd_
@@ -103,19 +107,17 @@ In this task, you'll connect to your device and update its name through the web 
 	_Change your device name_
 
 <a name="Ex1Task2"></a>
-#### Task 2 - Using the web interface to verify (or configure) WiFi  ####
+#### Task 2 - Verify the Remote Client works  ####
 
-In this task, you'll use the Device Portal to verify the connection to a WiFi network.
+In this task, you will verify the "Windows IoT Core Remote Client" connection.
 
-> **Note:** For the Build 2016 labs, the device name and WiFi setup was completed before you started this lab. Please follow the steps below to verify and update as necessary. 
+To start press the Windows key and type “Windows IoT Core Remote Client”.
 
-1. Click **Networking** in the left-hand pane.
+It is highly likley that you will need to enter the IP address of your Raspberry Pi. Get the address of the device from the **Windows 10 IoT Core Dashboard**.
 
-	![Networking page](Images/ex1task2-device-portal-networking.png?raw=true "Networking page")
+This will take a moment to connect. When it does you will see the video output of the Raspberry Pi remoted to your desktop.
 
-	_Networking page_
-
-1. For Build 2016, simply verify that IoT-Lab is the connected and checked WiFi profile.
+![Windows IoT Remote Client](Images/windows-iot-remote-client.png?raw=true "Windows IoT Remote Client")
 
 <a name="Ex1Task3"></a>
 #### Task 3 - Using the web interface to verify (or configure) screen resolution  ####
@@ -555,6 +557,4 @@ By completing this module, you should have:
 - Programmed the input (buttons) and output (LEDs) of a GHI's FEZ HAT topping connected to the Raspberry Pi
 - Read the temperature and light sensors and set the RGB LEDs colors from the FEZ HAT
 
-Build attendees, please submit a quick evaluation for this lab:
 
-![](Images/L714-R1.png)
