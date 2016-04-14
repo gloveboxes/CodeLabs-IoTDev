@@ -87,403 +87,102 @@ You must register your device in order to be able to send and receive informatio
 	> **Note:** The device identities registration can be automated using the Azure IoT Hubs SDK. An example of how to do that can be found [here](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-csharp-csharp-getstarted/#create-a-device-identity).
 
 
-<a name="Task2" />
-## Creating a Universal App
-Now that the device is configured, you will see how to create an application to read the value of the FEZ HAT sensors, and then send those values to an Azure IoT Hub.
++++++++++++++++++++++++++++
 
-<a name="Task21" />
-### Read FEZ HAT sensors
-In order to get the information out of the hat sensors, you will take advantage of the [Developers' Guide](https://www.ghielectronics.com/docs/329/fez-hat-developers-guide "GHI Electronics FEZ HAT Developer's Guide") that [GHI Electronics](https://www.ghielectronics.com/ "GHI Electronics")  published.
+<a name="Ex2Task3"></a>
+#### Task 3 - Sending telemetry data to the Azure IoT hub ####
 
-1. Download the [zipped repository](https://bitbucket.org/ghi_elect/windows-iot/get/183b64180b7c.zip "Download FEZ HAT Developers' Guide repository")
 
-1. Unblock the .zip file before extracting it. Unblocking the .zip file will keep Visual Studio from prompting you about "Trustworthy Sources". To Unblock the .zip file:
+In order to get the information out of the hat sensors, you will take advantage of the Developers' Guide that GHI Electronics published.
 
-	- Right click on the downloaded .zip file
-	- Select "**Properties**" from the popup menu. 
-	- In the "**Properties**" window, on the "**General**" tab, turn on the checkbox labeled "**Unblock**"
-	- Click "**OK**"
+Now that the device is configured, you'll see how to make an application read the values of the FEZ HAT sensors, and then send those values to an Azure IoT Hub.
 
-1. Extract the files in your file system and locate the _GHIElectronics.UAP.sln_ solution file (You must have **Visual Studio** installed in order to open the solution).
+This task uses an existing Universal application that will be deployed to your Raspberry Pi device and use FEZ HAT sensors.
 
-2. After opening the solution you will see several projects. The _Developers's Guide_ comes with examples of many of the shields provided by the company. Right-click the one named _GHIElectronics.UAP.Examples.FEZHAT_, and select **Set as Startup Project**.
+1. Open in Visual Studio the **IoTWorkshop.sln** solution located at **Source\Ex2\Begin** folder.
 
-	![Set FEZ HAT examples project as default](Images/set-fez-hat-examples-project-as-default.png?raw=true)
+1. In **Solution Explorer**, right-click the **IoTWorkshop** project, and then click **Manage NuGet Packages**.
 
-	_Setting the FEZ hat example as the default project_
+1. In the **NuGet Package Manager** window, click **Browse** and search for **Microsoft Azure Devices** and **PCL Crypto**, click **Install** to install the **Microsoft.Azure.Devices.Client** and **PCLCrypto** packages, and accept the terms of use.
 
-3. Ensure that the target platform for the project is set to "**ARM**":
+    This downloads, installs, and adds a reference to the [Microsoft Azure IoT Service](https://www.nuget.org/packages/Microsoft.Azure.Devices/) SDK NuGet package.
 
-	![arm-target-platform](Images/arm-target-platform.png?raw=true)
-
-4. Build the solution to restore the NuGet packages, and make sure it builds:
-
-	![ghifezhat-build-solution](Images/ghifezhat-build-solution.png?raw=true)
-
-	![ghifezhat-build-succeeded](Images/ghifezhat-build-succeeded.png?raw=true)
-
-5. If after building the solution you still see IntelliSense errors in the code, you may need to close and re-open Visual Studio, then re-open the solution.
-
-	> **Note:** Now you will inspect the sample code to see how it works. Bear in mind that this example is intended to show all the available features of the shield, while in this lab you will use just a couple of them (temperature and light sensors).
-
-6. Open the _MainPage.xaml.cs_ file and locate the **Setup** method.
+1. Add the following _using_ statements at the top of the **MainPage.xaml.cs** file:
 
 	````C#
-	private async void Setup()
+	using Microsoft.Azure.Devices.Client;
+	````
+
+1. Add the following field to the **MainPage** class, replace the placeholder value with the **device connection string** you've created in the previous task (note that the curly braces { } are _NOT_ part of the connection string and should be _removed_ when you paste in your connection string):
+
+	````C#
+	private DeviceClient deviceClient = DeviceClient.CreateFromConnectionString("{device connection string}");
+	````
+
+1. Add the following method to the **MainPage** class to create and send messages to the IoT hub. Resolve the missing using statements.
+
+	````C#
+	public async void SendMessage(string message)
 	{
-		this.hat = await GIS.FEZHAT.CreateAsync();
+		 // Send message to an IoT Hub using IoT Hub SDK
+		 try
+		 {
+			  var content = new Message(Encoding.UTF8.GetBytes(message));
+			  await deviceClient.SendEventAsync(content);
 
-		this.hat.S1.SetLimits(500, 2400, 0, 180);
-		this.hat.S2.SetLimits(500, 2400, 0, 180);
-
-		this.timer = new DispatcherTimer();
-		this.timer.Interval = TimeSpan.FromMilliseconds(100);
-		this.timer.Tick += this.OnTick;
-		this.timer.Start();
+			  Debug.WriteLine("Message Sent: {0}", message, null);
+		 }
+		 catch (Exception e)
+		 {
+			  Debug.WriteLine("Exception when sending message:" + e.Message);
+		 }
 	}
 	````
 
-	In the first line, the program creates an instance of the FEZ HAT driver and stores it in a local variable. The driver is used for interacting with the shield. Then, after setting the limits for the servos (not used in this lab), a new **DispatchTimer** is created. A timer is often used in projects of this kind to poll the state of the sensors and perform operations. In this case the **OnTick** method is called every 100 miliseconds. You can see this method below.
+1. Add the following code to the **Timer_Tick** method to send a message with the temperature and another with the light level:
 
 	````C#
-	private void OnTick(object sender, object e)
-	{
-		double x, y, z;
+	// send data to IoT Hub
+	var jsonMessage = string.Format("{{ displayname:null, location:\"USA\", organization:\"Fabrikam\", guid: \"41c2e437-6c3d-48d0-8e12-81eab2aa5013\", timecreated: \"{0}\", measurename: \"Temperature\", unitofmeasure: \"C\", value:{1}}}",
+		 DateTime.UtcNow.ToString("o"),
+		 temp);
 
-		this.hat.GetAcceleration(out x, out y, out z);
+	this.SendMessage(jsonMessage);
 
-		this.LightTextBox.Text = this.hat.GetLightLevel().ToString("P2", CultureInfo.InvariantCulture);
-		this.TempTextBox.Text = this.hat.GetTemperature().ToString("N2", CultureInfo.InvariantCulture);
-		this.AccelTextBox.Text = $"({x:N2}, {y:N2}, {z:N2})";
-		this.Button18TextBox.Text = this.hat.IsDIO18Pressed().ToString();
-		this.Button22TextBox.Text = this.hat.IsDIO22Pressed().ToString();
-		this.AnalogTextBox.Text = this.hat.ReadAnalog(GIS.FEZHAT.AnalogPin.Ain1).ToString("N2", CultureInfo.InvariantCulture);
+	jsonMessage = string.Format("{{ displayname:null, location:\"USA\", organization:\"Fabrikam\", guid: \"41c2e437-6c3d-48d0-8e12-81eab2aa5013\", timecreated: \"{0}\", measurename: \"Light\", unitofmeasure: \"L\", value:{1}}}",
+		 DateTime.UtcNow.ToString("o"),
+		 light);
 
-		...
-	}
-	````
-	This sample shows how to use the FEZ HAT driver to get data from the sensors. The data is then shown in the UI. (To see how the UI is designed check the _MainPage.xaml_ file)
-
-7. To deploy the application to the Raspberry Pi, the device has to be on the same network as the development computer. To run the program, select **Remote device** in the _Debug Target_ dropdown list:
-
-	![Deploy to Remote machine](Images/deploy-to-remote-machine.png?raw=true)
-
-	_Deploying the application to a Remote Machine_
-
-8. If a remote machine has not been selected before, the **Select Remote Connection** screen will be displayed:
-
-	![Remote Connection](Images/remote-connection.png?raw=true)
-
-	_Setting up the Remote Connection_
-
-9. If the device is not auto-detected, the Raspberry Pi IP or name can be entered in the **Address** field. Otherwise, click the desired device. Change the **Authentication Mode** to **Universal (Unencrypted Protocol)**:
-
-	![Set Authentication mode to Universal](Images/set-authentication-mode-to-universal.png?raw=true)
-
-	_Setting the Authentication Mode_
-
-10. If you want to change the registered remote device later it can be done in the project **Properties** page. Right-click the project name (_GHIElectronics.UAP.Examples.FEZHAT_) and select **Properties**. In the project Properties' page, select the **Debug** tab and enter the new device name or IP in the **Remote Machine** field.
-
-	![Change Remote connection](Images/change-remote-connection.png?raw=true)
-
-	_Changing the Remote Connection Settings_
-
-	> **Note:** Clicking the **Find** button will display the **Remote Connection** screen.
-
-11. If you don't have a screen connected to the _Raspberry_, you can add the following code to the **OnTick** method in order to show the value of the sensors in the Visual Studio **Output Console**.  (Insert the code after reading the sensors).
-
-	````C#
-	// Add diagnostics information
-	System.Diagnostics.Debug.WriteLine("Light: {0}, Temp: {1}, Accel: {2}, Button18: {3}, Button22: {4}",
-	    this.LightTextBox.Text,
-	    this.TempTextBox.Text,
-	    this.AccelTextBox.Text,
-	    this.Button18TextBox.Text,
-	    this.Button22TextBox.Text);
+	this.SendMessage(jsonMessage);
 	````
 
+	1. In order to deploy your app to the IoT device, select the **ARM** architecture in the Solution Platforms dropdown.
 
-12. Click the debug button to start the deployment to the Raspberry Pi.  The first deployment will take some time as the remote debug tools, frameworks, and your code all need to be deployed.  This could take up to a couple of minutes to completely deploy.  You can monitor the status in the Visual Studio "**Output**" window.
+		![ARM Solution Platform](Images/arm-platform.png?raw=true "ARM Solution Platform")
 
-	![debug-ghifezhat](Images/debug-ghifezhat.png?raw=true)
+		_ARM Solution Platform_
 
-13. If the program is successfully deployed to the device, the current value of the different sensors will be displayed on the screen. The shield leds will also be turned on and off alternately. In addition, if you added the Debug.Writeline code above to the OnTick method, the "**Output**" window will display sensor data:
+	1. Next, click the **Device** dropdown and select **Remote Machine**.
 
-	![ghifezhat-debug-output](Images/ghifezhat-debug-output.png?raw=true)
+		![Run in remote machine](Images/run-remote-machine.png?raw=true "Run in remote machine")
 
-<a name="Task22" />
-### Send telemetry data to the Azure IoT Hub
+		_Run in remote machine_
 
-Now that you know how to read the FEZ HAT sensors data, you will send that information to an Azure IoT Hub. To do that, you will use an existing project located in the **Code\Begin** folder. This project is based on the [ConnectTheDots Raspberry Pi with Windows 10 IoT sample project](https://github.com/Azure/connectthedots/tree/master/Devices/DirectlyConnectedDevices/WindowsIoTCorePi2) but using the [Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) to connect with Azure, instead of using an Event Hub.
+	1. In  the **Remote Connections** dialog, click your device name within the **Auto Detected** list and then click **Select**. Not all devices can be auto detected, if you don't see it, enter the IP address using the **Manual Configuration**. After entering the device name/IP, select **Universal (Unencrypted Protocol)** Authentication Mode, then click **Select**.
 
-1. Open the solution located in the **Code\Begin** folder.
+		![Remote Connections dialog](Images/remote-connections-dialog.png?raw=true "Remote Connections dialog")
 
-2. Before running the application, you must set the **Device connection** information. Go to the _MainPage_ method of the _MainPage.xaml.cs_ file and replace **IOT_CONNECTION_STRING** with your device connection string, obtained in previous steps using the Device Explorer app:
+		_Remote Connections dialog_
 
-	````C#
-	ctdHelper = new ConnectTheDotsHelper(iotDeviceConnectionString: "IOT_CONNECTION_STRING",
-	    organization: "YOUR_ORGANIZATION_OR_SELF",
-	    location: "YOUR_LOCATION",
-	    sensorList: sensors);
-	````
+1. Press **F5** to run and deploy the app to the device.
 
-	![Copying Device connection information](Images/copying-device-connection-information.png?raw=true)
+	The information being sent can be monitored using the Device Explorer application. Run the application and go to the **Data** tab and select the name of the device you want to monitor (_myRaspberryDevice_ in your case), then click  **Monitor**.
 
-	> **Note:** An **Organization** and **Location** may also be provided. Those values will be part of the telemetry message payload, and could be used to get a better classification of the data received.
+	![Monitoring messages sent](Images/monitoring-messages-sent.png?raw=true "Monitoring messages sent")
 
-3. 	Before the app can be deployed you need to change the solution target platform, since the Raspberry Pi is based on the ARM architecture. To do that select **ARM** in the **Solution Platform** dropdown:
+	_Monitoring messages sent_
 
-	![Set Solution Platform](Images/set-solution-platform.png?raw=true)
-
-	_Setting the Solution Platform_
-
-	As you can see in the sample code, the app uses a button in the UI to _simulate_ a real sensor. Every time the user presses the button the value of the sensor is incremented and that info is then sent to Azure.
-
-	````C#
-	private void Button_Click(object sender, RoutedEventArgs e)
-	{
-	    ConnectTheDotsSensor sensor = ctdHelper.sensors.Find(item => item.measurename == "Temperature");
-	    sensor.value = counter++;
-	    ctdHelper.SendSensorData(sensor);
-	}
-	````
-
-4. For those devices lacking a monitor or display, the button will be replaced by a **Timer** so the same function can be performed without needing to click any button. If this is your case, perform the following steps.
-
-	1. Replace the **Button_Click** method for this one:
-
-		````C#
-		private void Timer_Tick(object sender, object e)
-		{
-		    ConnectTheDotsSensor sensor = ctdHelper.sensors.Find(item => item.measurename == "Temperature");
-		    sensor.value = counter++;
-		    ctdHelper.SendSensorData(sensor);
-		}
-		````
-
-	2. Then, replace the call to the **Button_Click** method in the **MainPage** method for the following piece of code:
-
-		````C#
-		//Button_Click(null, null);
-		var timer = new DispatcherTimer();
-		timer.Interval = TimeSpan.FromMilliseconds(500);
-		timer.Tick += Timer_Tick;
-		timer.Start();
-		````
-
-		Which will make the Timer ticks twice a second.
-
-	3. Lastly, remove the button from the UI:
-
-		<!-- mark:4 -->
-		````XAML
-		<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-				<TextBox x:Name="HelloMessage" Text="ConnectTheDots on IoT" Margin="10" IsReadOnly="True"/>
-				<!--<Button x:Name="ClickMe" Content="Click Me!"  Margin="10" HorizontalAlignment="Center" Click="Button_Click"/>-->
-			</StackPanel>
-		</Grid>
-		````
-
-
-5. Before adding real sensor information you can run this code to see how the device connects to your **Azure IoT Hub** and sends information. Run the application.
-
-	![Debug Console output](Images/debug-console-output.png?raw=true)
-
-	_Debugging in the Output Window_
-
-6. After the app has been successfully deployed, it can start sending messages to the IoT Hub. If the device is connected to a display and a mouse, click the **Click Me** button several times.
-
-	The information being sent can be monitored using the Device Explorer application. Run the application and go to the **Data** tab and select the name of the device you want to monitor (_myFirstDevice_ in your case), then click on **Monitor**
-
-	![Monitoring messages sent](Images/monitoring-messages-sent.png?raw=true)
-
-	> **Note:** If the Device Explorer hub connection is not configured yet, you can follow the instructions explained in the [Registering your device](#Task14) section
-
-7. If you followed the instructions for devices without a screen attached, you will need to delete the timer created in that flow before you continue. A new timer will be created in the next steps replacing the previous one. Remove the **Timer_Tick** method you created before and delete the following lines from the **MainPage** constructor
-
-	````C#
-	var timer = new DispatcherTimer();
-	timer.Interval = TimeSpan.FromMilliseconds(500);
-	timer.Tick += Timer_Tick;
-	timer.Start();
-	````
-
-8. Now that the device is connected to the Azure IoT Hub, add some real sensor information. First, you need to add a reference the FEZ HAT drivers. To do so, instead of manually adding the projects included in the GHI Developer's Guide, you will install the [NuGet package](https://www.nuget.org/packages/GHIElectronics.UWP.Shields.FEZHAT/ "FEZ HAT NuGet Package") that they provide. To do this, open the **Package Manager Console** (Tools/NuGet Package Manager/Package Manager Console) and execute the following command:
-
-	````PowerShell
-	PM> Install-Package GHIElectronics.UWP.Shields.FEZHAT
-	````
-
-	![Intalling GHI Electronics NuGet package](Images/intalling-ghi-electronics-nuget-package.png?raw=true)
-
-	_Installing the FEZ hat Nuget package_
-
-9. Add a reference to the FEZ HAT library namespace in the _MainPage.xaml.cs_ file:
-
-	````C#
-	using GHIElectronics.UWP.Shields;
-	````
-
-10. Declare the variables that will hold the reference to the following objects:
- - **hat**: Of the type **Shields.FEZHAT**, will contain the hat driver object that you will use to communicate with the FEZ hat through the Raspberry Pi hardware.
-  - **telemetryTimer**: of the type **DispatchTimer**, that will be used to poll the hat sensors at regular basis. For every _tick_ of the timer the value of the sensors will be get and sent to Azure.
-
-	````C#
-	FEZHAT hat;
-	DispatcherTimer telemetryTimer;
-	````
-
-11. You will add the following method to initialize the objects used to handle the communication with the hat. The **TelemetryTimer_Tick** method will be defined next, and will be executed every 500 ms according to the value hardcoded in the **Interval** property.
-
-	````C#
-	private async Task SetupHatAsync()
-	{
-	    this.hat = await FEZHAT.CreateAsync();
-
-	    this.telemetryTimer = new DispatcherTimer();
-
-	    this.telemetryTimer.Interval = TimeSpan.FromMilliseconds(500);
-	    this.telemetryTimer.Tick += this.TelemetryTimer_Tick;
-
-	    this.telemetryTimer.Start();
-	}
-	````
-
-12. The following method will be executed every time the timer ticks, and will poll the value of the hat's temperature sensor, send it to the Azure IoT Hub and show the value obtained.
-
-	````C#
-	private void TelemetryTimer_Tick(object sender, object e)
-	{
-	    // Temperature Sensor
-	    var tSensor = ctdHelper.sensors.Find(item => item.measurename == "Temperature");
-	    tSensor.value = this.hat.GetTemperature();
-	    this.ctdHelper.SendSensorData(tSensor);
-
-	    this.HelloMessage.Text = "Temperature: " + tSensor.value.ToString("N2");
-
-	    System.Diagnostics.Debug.WriteLine("Temperature: {0} °C", tSensor.value);
-	}
-	````
-
-	The first statement gets the _ConnectTheDots_ sensor from the sensor collection already in place in the project (the temperature sensor was already included in the sample solution). Next, the temperature is polled out from the hat's temperature sensor using the driver object you initialized in the previous step. Then, the value obtained is sent to Azure using the _ConnectTheDots_'s helper object **ctdHelper** which is included in the sample solution.
-
-	The last two lines are used to show the current value of the temperature sensor to the screen and the debug console respectively.
-
-	> **Note:** To show the value of the sensor in the screen the app is using the Welcome message textbox. In the following steps the UI will be improved.
-
-13. Before running the application you need to add the call to the **SetupHatAsync** method. Replace the **Page_Loaded** method with this block of code:
-
-	````C#
-	private async void Page_Loaded(object sender, RoutedEventArgs e)
-	{
-		// Initialize FEZ HAT shield
-		await SetupHatAsync();
-	}
-	````
-
-	> Note that the **async** modifier was added to the event handler to properly handle the asynchronous call to the FEZ HAT initialization method.
-
-14. Now you are ready to run the application. Connect the Raspberry Pi with the FEZ HAT and run the application. After the app is deployed you will start to see in the output console (also in the screen) the values polled from the sensor. The information sent to Azure is also shown in the console.
-
-	![Console output](Images/console-output.png?raw=true)
-
-	_Output Window_
-
-	You can also check that the messages were successfully received by monitoring them using the Device Explorer
-
-	![Telemetry messages received](Images/telemetry-messages-received.png?raw=true)
-
-15. Now you will add the information from another sensor. To incorporate the data from the Light sensor you will need to add a new _ConnectTheDots_ sensor:
-	<!-- mark:3 -->
-	````C#
-	// Hard coding guid for sensors. Not an issue for this particular application which is meant for testing and demos
-	List<ConnectTheDotsSensor> sensors = new List<ConnectTheDotsSensor> {
-		new ConnectTheDotsSensor("2298a348-e2f9-4438-ab23-82a3930662ab", "Light", "L"),
-		new ConnectTheDotsSensor("d93ffbab-7dff-440d-a9f0-5aa091630201", "Temperature", "C"),
-	};
-	````
-
-16. Next, add the following code to the **TelemetryTimer_Tick** method to poll the data from the temperature sensor and send it to Azure.
-
-	````C#
-	// Light Sensor
-	ConnectTheDotsSensor lSensor = ctdHelper.sensors.Find(item => item.measurename == "Light");
-	lSensor.value = this.hat.GetLightLevel();
-
-	this.ctdHelper.SendSensorData(lSensor);
-
-	this.HelloMessage.Text = String.Format("Temperature: {0} °C, Light {1}", tSensor.value.ToString("N2"), lSensor.value.ToString("P2", System.Globalization.CultureInfo.InvariantCulture));
-
-	System.Diagnostics.Debug.WriteLine("Temperature: {0} °C, Light {1}", tSensor.value.ToString("N2"), lSensor.value.ToString("P2", System.Globalization.CultureInfo.InvariantCulture));
-	````
-
-	> **Note:** If you want to poll the Light sensor data at a different rate, you will need to create another _DispatchTimer_ and set it to different interval.
-
-	After running the app you will see the following output in the debug console. In this case two messages are sent to Azure in every timer tick:
-
-	![Debug console after adding Light Sensor](Images/debug-console-after-adding-light-sensor.png?raw=true)
-
-	_Output Window after Adding the Light Sensor_
-
-17. (Optional) If you have a screen connected to the Raspberry Pi device, you can improve the existing UI to show the sensor information in the screen. To do that, replace the content of the **MainPage.xaml** file code for this one:
-
-	````XAML
-	<Page
-		x:Class="WindowsIoTCorePi2FezHat.MainPage"
-		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:local="using:WindowsIoTCorePi2FezHat"
-		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		mc:Ignorable="d">
-		<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
-				<StackPanel Width="100">
-					<TextBlock Text="Light: " FontSize="26.667" Margin="10" />
-					<TextBlock Text="Temp: " FontSize="26.667" Margin="10" />
-				</StackPanel>
-				<StackPanel>
-					<StackPanel Margin="10">
-					    <TextBlock Name="LightTextBox" FontSize="26.667" />
-					    <ProgressBar Name="LightProgress" Value="0" Minimum="0" Maximum="1" Width="150"></ProgressBar>
-					</StackPanel>
-					<TextBlock Name="TempTextBox" FontSize="26.667" Margin="10" />
-				</StackPanel>
-			</StackPanel>
-		</Grid>
-	</Page>
-	````
-
-	The preceding view code incorporates a new textbox for every sensor and also a progress bar to graphically show the value of the Light sensor.
-
-18. Lastly, you will update the **TelemetryTimer_Tick** method to adapt it to the new UI structure. Replace the method with the following code:
-
-	````C#
-	private void TelemetryTimer_Tick(object sender, object e)
-	{
-	    // Light Sensor
-	    ConnectTheDotsSensor lSensor = ctdHelper.sensors.Find(item => item.measurename == "Light");
-	    lSensor.value = this.hat.GetLightLevel();
-
-	    this.ctdHelper.SendSensorData(lSensor);
-	    this.LightTextBox.Text = lSensor.value.ToString("P2", System.Globalization.CultureInfo.InvariantCulture);
-	    this.LightProgress.Value = lSensor.value;
-
-	    // Temperature Sensor
-	    var tSensor = ctdHelper.sensors.Find(item => item.measurename == "Temperature");
-	    tSensor.value = this.hat.GetTemperature();
-	    this.ctdHelper.SendSensorData(tSensor);
-
-	    this.TempTextBox.Text = tSensor.value.ToString("N2", System.Globalization.CultureInfo.InvariantCulture);
-
-	    System.Diagnostics.Debug.WriteLine("Temperature: {0} °C, Light {1}", tSensor.value.ToString("N2", System.Globalization.CultureInfo.InvariantCulture), lSensor.value.ToString("P2", System.Globalization.CultureInfo.InvariantCulture));
-	}
-	````
-
-	![App UI Screenshot](Images/app-ui-screenshot.png?raw=true)
-
-	_Universal app UI_
+    **Note**: If you navigate back to your IoT Hub blade in the Azure Portal, it may take a couple minutes before the message count is updated to reflect the device activity under **Usage**.
 
 <a name="Task3" />
 ## Consuming the IoT Hub data
