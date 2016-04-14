@@ -1,8 +1,7 @@
 ﻿Windows 10 IoT Core Hands-on Lab
 ========================================
 
-<a name="Objective" />
-## Summary
+##Objective
 In this lab, you will learned how to create a Universal app that reads from the sensors of a FEZ hat connected to a Raspberry Pi 2 running Windows 10 IoT Core, and stream these readings to an Azure IoT Hub. 
 You also learned how to read and consume the information in the IoT Hub using Power BI to get near real-time analysis of the information gathered from the FEZ hat sensors. 
 You will ge get some first hand experience with IoT Hub Command and Control.
@@ -10,7 +9,7 @@ You will ge get some first hand experience with IoT Hub Command and Control.
 ###Exercises 
 
 <a name="Prerequisites"></a>
-### Prerequisites ###
+###Prerequisites
 
 The following is required to complete this module:
 
@@ -41,8 +40,7 @@ The following is required to complete this module:
 [10]: SettingUpAzure.md
 
 
-<a name="Exercises"></a>
-## Exercises ##
+##Exercises##
 This module includes the following exercises:
 
 1. [Provisioning an Azure Account](AzureProvisioning.md) 

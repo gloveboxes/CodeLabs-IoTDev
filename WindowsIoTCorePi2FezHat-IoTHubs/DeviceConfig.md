@@ -1,3 +1,5 @@
+[Previous Lab -> Provisioning an IoT Hub](AzureIoTHub.md)
+
 ### Exercise 1: Connecting and configuring your device ###
 
 The Raspberry Pi will be connected to the development PC through a wired Ethernet connection. 
@@ -46,3 +48,5 @@ This will take a moment to connect. When it does you will see the video output o
 Minimise the remote client application when you have verified that it is working.
 
 ![Windows IoT Remote Client](Images/windows-iot-remote-client.png?raw=true "Windows IoT Remote Client")
+
+[Next Lab -> Streaming Telemetry from a device](DeviceTelemetryStreaming.md)
