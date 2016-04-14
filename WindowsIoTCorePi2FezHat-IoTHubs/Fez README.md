@@ -1,6 +1,100 @@
 ﻿Windows 10 IoT Core Hands-on Lab
 ========================================
 
+<a name="Prerequisites"></a>
+### Prerequisites ###
+
+The following is required to complete this module:
+
+- Windows 10 with [developer mode enabled][1]
+- [Visual Studio Community 2015][2] with [Update 1][3] or greater
+- [Windows IoT Core Project Templates][4]
+- [Raspberry PI board with Windows IoT Core image][5]
+- [GHI FEZ HAT][6]
+- [Windows 10 IoT Core Dashboard][7]
+- [Windows IoT Remote Client][8] see [Remote Display Experience](https://developer.microsoft.com/en-us/windows/iot/win10/remotedisplay)
+- [IoT Hub Device Explorer][9] (Scroll down for SetupDeviceExplorer.msi)
+
+
+
+> **Note:** The source code for this lab is available on [GitHub](/Module1-IntroWindows10IoTCore/Source).
+
+[1]: https://msdn.microsoft.com/library/windows/apps/xaml/dn706236.aspx
+[2]: https://www.visualstudio.com/products/visual-studio-community-vs
+[3]: http://go.microsoft.com/fwlink/?LinkID=691134
+[4]: https://visualstudiogallery.msdn.microsoft.com/55b357e1-a533-43ad-82a5-a88ac4b01dec
+[5]: https://ms-iot.github.io/content/en-US/win10/RPI.htm
+[6]: https://www.ghielectronics.com/catalog/product/500
+[7]: https://developer.microsoft.com/en-us/windows/iot/getstarted
+[8]: https://www.microsoft.com/store/apps/9nblggh5mnxz
+[9]: https://github.com/Azure/azure-iot-sdks/releases
+
+
+<a name="Exercises"></a>
+## Exercises ##
+This module includes the following exercises:
+
+1. [Connecting and configuring your device](#Exercise1)
+1. [Setting up your Azure Account](#Task13)
+1. [Creating an IoT Hub](#CreatingIoTHub)
+1. [Creating a Stream Analitycs Job](#CreatingStreamAnaltics)
+1. [Registering your device](#RegisterDevice)
+1. [Sending telemetry data to the Azure IoT hub](SendingTelemetry)
+1. [Consuming the IoT Hub data](#ConsumingData)
+
+Estimated time to complete this module: **60 minutes**
+
+
+<a name="Exercise1"></a>
+### Exercise 1: Connecting and configuring your device ###
+
+The Raspberry Pi will be connected to the development PC through a wired Ethernet connection. 
+This connection is used both for deployment and debugging as well as passing through internet requests from the Raspberry Pi when [Internet Connection Sharing](http://ms-iot.github.io/content/en-US/win10/ConnectToDevice.htm) is enabled on the PC.
+
+<a name="Ex1Task1"></a>
+#### Task 1 - Identifying the device using IoT Core Dashboard ####
+
+In this task, you'll connect to your device and explore the web management interface.
+
+
+1. Launch the **Windows 10 IoT Core Dashboard**, go to **My devices** and click the **Open in Device Portal** icon of your device name. 
+
+	![Windows 10 IoT Core Dashboard](Images/ex1task1-watcher.png?raw=true "Windows 10 IoT Core Dashboard")
+
+	_Windows 10 IoT Core Dashboard_
+
+> **Note:** You can also launch the _Device Portal_ by browsing the _IP address_ and adding **:8080**.
+
+
+1. In the credentials dialog, use the default username and password. Username: _Administrator_ Password: _p@ssw0rd_
+
+	![Device Portal credentials](Images/ex1task1-device-portal-credentials.png?raw=true "Device Portal credentials")
+
+	_Device Portal credentials_
+
+1. **Windows Device Portal** should launch and display the web management home screen!
+
+	![Windows Device Portal](Images/ex1task1-device-portal.png?raw=true "Windows Device Portal")
+
+	_Windows Device Portal_
+
+1. For now, just explore and don't change any settings.
+
+<a name="Ex1Task2"></a>
+#### Task 2 - Verify the Windows IoT Remote Client connection  ####
+
+In this task, you will verify the "Windows IoT Core Remote Client" connection.
+
+To start press the Windows key and type “Windows IoT Core Remote Client” and run the app.
+
+It is  likley that you will need to enter the IP address of your Raspberry Pi. Get the address of the device from the **Windows 10 IoT Core Dashboard**.
+
+This will take a moment to connect. When it does you will see the video output of the Raspberry Pi remoted to your desktop.
+
+Minimise the remote client application when you have verified that it is working.
+
+![Windows IoT Remote Client](Images/windows-iot-remote-client.png?raw=true "Windows IoT Remote Client")
+
 <a name="Task13" />
 ### Setting up your Azure Account
 
@@ -17,7 +111,7 @@ There are currently two free trail offers – either good for the purposes of th
 Valid credit card information is required for identity verification purposes only. Your credit card will not be charged for this offer unless you explicitly remove the spending limit.
 
 
-
+<a name="CreatingIoTHub" />
 
 #### Creating an IoT Hub
 
@@ -46,6 +140,8 @@ Valid credit card information is required for identity verification purposes onl
 
 	![Get IoT Hub owner connection string](Images/get-iot-hub-owner-connection-string.png?raw=true)
 
+
+<a name="CreatingStreamAnaltics" />
 #### Creating a Stream Analitycs Job
 
 To create a Stream Analytics Job, perform the following steps.
@@ -68,7 +164,7 @@ To create a Stream Analytics Job, perform the following steps.
 
 	_Managing Access Keys_
 
-<a name="Task14" />
+<a name="RegisterDevice" />
 ### Registering your device
 You must register your device in order to be able to send and receive information from the Azure IoT Hub. This is done by registering a [Device Identity](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/#device-identity-registry) in the IoT Hub.
 
@@ -88,7 +184,7 @@ You must register your device in order to be able to send and receive informatio
 
 
 
-<a name="Ex2Task3"></a>
+<a name="SendingTelemetry"></a>
 #### Task 3 - Sending telemetry data to the Azure IoT hub ####
 
 
@@ -183,7 +279,7 @@ This task uses an existing Universal application that will be deployed to your R
 
     **Note**: If you navigate back to your IoT Hub blade in the Azure Portal, it may take a couple minutes before the message count is updated to reflect the device activity under **Usage**.
 
-<a name="Task3" />
+<a name="ConsumingData" />
 ## Consuming the IoT Hub data
 You have seen how to use the Device Explorer to peek the data being sent to the Azure IoT Hub. However, the Azure IoT suite offers many different ways to generate meaningful information from the data gathered by the devices. In the following sections you will explore two of them: You will see how the Azure Services Bus Messaging system can be used in a Website (part of the ConnectTheDots project), and how to use Azure Stream Analytics in combination with Microsoft Power BI to consume the data and to generate meaningful reports.
 
