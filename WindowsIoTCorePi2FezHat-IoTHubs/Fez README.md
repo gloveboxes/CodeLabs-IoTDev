@@ -48,7 +48,7 @@ The following is required to complete this module:
 [7]: https://developer.microsoft.com/en-us/windows/iot/getstarted
 [8]: https://www.microsoft.com/store/apps/9nblggh5mnxz
 [9]: https://github.com/Azure/azure-iot-sdks/releases
-[10]: http://AzureAccount.md
+[10]: AzureAccount.md
 
 
 <a name="Exercises"></a>
