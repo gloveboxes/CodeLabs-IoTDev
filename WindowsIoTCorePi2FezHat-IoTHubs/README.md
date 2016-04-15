@@ -39,6 +39,7 @@ The following is required to complete this module:
 [9]: https://github.com/Azure/azure-iot-sdks/releases
 [10]: SettingUpAzure.md
 
+Estimated time to complete Module 2: **60 minutes**
 
 ##Exercises##
 This module includes the following exercises:
@@ -51,7 +52,7 @@ This module includes the following exercises:
 1. [Controlling a device from IoT Hub](DeviceControl.md)
 
 
-Estimated time to complete this module: **60 minutes**
+
 
 
 
