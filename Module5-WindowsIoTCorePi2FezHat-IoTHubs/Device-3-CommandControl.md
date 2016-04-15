@@ -15,9 +15,9 @@ We will use two NuGet Packages: -
 
 Visual Studio -> New Project -> Windows IoT Core
 
-![Create New IoT Core Background Application](\images\mqtt-background-application-new.png)
+![Create New IoT Core Background Application](/images/mqtt-background-application-new.png)
 
-![New Universal Project Defaults](\images\mqtt-new-universal-project-defaults.png)
+![New Universal Project Defaults](/images/mqtt-new-universal-project-defaults.png)
 
 Install-Package M2Mqtt 
 Install-Package Newtonsoft.Json 
@@ -71,14 +71,14 @@ Install-Package GHIElectronics.UWP.Shields.FEZHAT
                         client.Publish(hubTopicPublish, temperature.ToJSON(hat.GetTemperature()));
                         client.Publish(hubTopicPublish, light.ToJSON(hat.GetLightLevel()));
 
-                        await Task.Delay(5000);
+                        await Task.Delay(30000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                     }
                 });
             }
 
             private void Client_MqttMsgPublishReceived(object sender, uPLibrary.Networking.M2Mqtt.Messages.MqttMsgPublishEventArgs e) {
                 string message = System.Text.Encoding.UTF8.GetString(e.Message).ToUpperInvariant();
-                Debug.WriteLine("Command Received: {0}", message);
+                Debug.WriteLine($"Command Received: {message}");
 
                 switch (message) {
                     case "RED":
