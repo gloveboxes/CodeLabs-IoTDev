@@ -15,6 +15,7 @@ One of the most interesting ways to use the information received from the connec
 #### Setting up a Power BI account
 If you don't have a Power BI account already, you will need to create one (a free account is enough to complete this lab). If you already have an account set you can skip this step.
 
+
 1. Go to the [Power BI website](https://powerbi.microsoft.com/) and follow the sign-up process.
 
 	**Note:** At the moment this lab was written, only users with corporate email accounts are allowed to sign up. Free consumer email accounts (like Outlook, Hotmail, Gmail, Yahoo, etc.) can't be used.
