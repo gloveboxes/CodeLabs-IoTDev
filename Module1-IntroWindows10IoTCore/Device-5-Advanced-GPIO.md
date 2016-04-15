@@ -1,5 +1,5 @@
 >[Home](README.md) </br>
->Previous Lab [Blinky LEDs](Device-5-Blinky.md)
+>Previous Lab [Programming IO](Device-4-Programming-IO.md)
 
 ###Exercise 6: Advanced GPIO
 
