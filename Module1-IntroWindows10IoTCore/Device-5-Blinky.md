@@ -1,7 +1,7 @@
 >[Home](README.md) </br>
 >Previous Lab [Programming IO](Device-4-Programming-IO.md)
 
-#### Task 2 - Blinking the LED based on a button press ####
+#### Exercise 5: - Blinking the LED based on a button press ####
 
 In this task, you'll refactor the application to use the button from the FEZ HAT to make the LED blink.
 

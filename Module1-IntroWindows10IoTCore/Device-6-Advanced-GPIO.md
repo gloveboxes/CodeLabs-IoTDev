@@ -1,7 +1,7 @@
 >[Home](README.md) </br>
 >Previous Lab [Blinky LEDs](Device-5-Blinky.md)
 
-###Exercise 5: Advanced GPIO
+###Exercise 6: Advanced GPIO
 
 In addition to the red LED and buttons in the FEZ HAT, there are also temperature and light sensors.
 
