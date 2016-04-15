@@ -1,7 +1,7 @@
 >[Home](README.md) </br>
 >Previous Lab [Connecting and configuring your device](DeviceConfig.md)
 
-#### Streaming telemetry data to the Azure IoT hub ####
+# Streaming telemetry data to the Azure IoT hub ####
 
 
 In order to get the information out of the hat sensors, you will take advantage of the Developers' Guide that GHI Electronics published.

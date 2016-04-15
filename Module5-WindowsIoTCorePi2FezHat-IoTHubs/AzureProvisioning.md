@@ -1,7 +1,7 @@
 >[Home](README.md)
 
 
-### Setting up your Azure Account
+# Setting up your Azure Account
 
 
 For this lab you will need access to an Azure subscription

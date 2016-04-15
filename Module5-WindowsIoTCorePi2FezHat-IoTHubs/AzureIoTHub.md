@@ -1,7 +1,9 @@
 >[Home](README.md) </br>
 >Previous Lab [Provisioning an Azure Account](AzureProvisioning.md) 
 
-#### Creating an IoT Hub
+#Provisioning an Azure IoT Hub and an IoT Device
+
+### Task 1 - Creating an IoT Hub
 
 1. Enter the Azure portal, by browsing to http://portal.azure.com
 2. Create a new IoT Hub. To do this, click **New** in the jumpbar, then click **Internet of Things**, then click **Azure IoT Hub**.
@@ -28,7 +30,7 @@
 
 	![Get IoT Hub owner connection string](Images/get-iot-hub-owner-connection-string.png?raw=true)
 
-### Registering your device
+### Task 2 - Registering your device
 You must register your device in order to be able to send and receive information from the Azure IoT Hub. This is done by registering a [Device Identity](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-devguide/#device-identity-registry) in the IoT Hub.
 
 1. Open the Device Explorer app (C:\Program Files (x86)\Microsoft\DeviceExplorer\DeviceExplorer.exe) and fill the **IoT Hub Connection String** field with the connection string of the IoT Hub you created in previous steps and click on **Update**.
