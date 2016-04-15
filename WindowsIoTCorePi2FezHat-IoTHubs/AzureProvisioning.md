@@ -1,4 +1,5 @@
 [Home](README.md)
+
 [Next Lab ->Provisioning an IoT Hub](AzureIoTHub.md)
 
 ### Setting up your Azure Account
@@ -17,4 +18,5 @@ Valid credit card information is required for identity verification purposes onl
 
 
 [Home](README.md)
+
 [Next Lab ->Provisioning an IoT Hub](AzureIoTHub.md)
