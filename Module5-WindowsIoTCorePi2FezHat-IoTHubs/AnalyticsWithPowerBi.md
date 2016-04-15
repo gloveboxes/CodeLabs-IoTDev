@@ -1,5 +1,5 @@
 >[Home](README.md) </br>
->Previous Lab [Streaming Telemetry from a device](DeviceTelemetryStreaming.md)
+>Previous Lab [Streaming Telemetry from a device](DeviceStreaming.md)
 
 # Consuming the IoT Hub data
 
