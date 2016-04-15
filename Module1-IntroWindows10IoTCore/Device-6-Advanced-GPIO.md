@@ -1,13 +1,13 @@
 >[Home](README.md) </br>
 >Previous Lab [Blinky LEDs](Device-5-Blinky.md)
 
-### (Optional) Exercise 5: Advanced GPIO ###
+###Exercise 5: Advanced GPIO
 
 In addition to the red LED and buttons in the FEZ HAT, there are also temperature and light sensors.
 
 In this exercise, you'll refactor the UI to display the room temperature and light level values from the FEZ HAT sensors.
 
-<a name="Ex5Task1"></a>
+
 #### Task 1 - Getting light and temperature information ####
 
 The FEZ HAT driver includes methods to get the temperature and light levels. In this task, you'll refactor the UI to display those values.
@@ -77,7 +77,7 @@ The FEZ HAT driver includes methods to get the temperature and light levels. In 
 
 	_Running application_
 
-<a name="Ex5Task2"></a>
+
 #### Task 2 - Using the RGB LED  ####
 
 In this task, you'll use the 2 RGB LEDs in the FEZ HAT to output light with different intensities, according to the temperature and light in the room.

@@ -1,7 +1,7 @@
 >[Home](README.md) </br>
 >Previous Lab [Connecting and configuring your device](Device-1-Config.md)
 
-<a name="Exercise2"></a>
+
 ### Exercise 2: Create and deploy "Hello World" UWP ###
 
 A **Universal Windows Platform (UWP)** app has the potential to run on any Windows-powered device like a Raspberry Pi device with Windows 10 IoT core.
@@ -10,7 +10,7 @@ A **Universal Windows Platform (UWP)** app has the potential to run on any Windo
 
 In this exercise, you'll create and deploy a UWP app for headed mode using a XAML view to display a TextBlock and a button that updates the TextBlock content.
 
-<a name="Ex2Task1"></a>
+
 #### Task 1 - Creating a Hello World UWP app ####
 
 In this task, you'll use the Universal project template to create a Blank App. Then you'll add some UI elements and verify the app by debugging the application on your local PC.
@@ -61,7 +61,7 @@ In this task, you'll use the Universal project template to create a Blank App. T
 
 1. Click the **Click Me!** button to verify that the input message changes and close the app after you're done verifying it.
 
-<a name="Ex2Task2"></a>
+
 #### Task 2 - Deploying your app to the device ####
 
 Now that you validated the app in your local PC, you can deploy it to the Raspberry Pi device by using remote debugging.

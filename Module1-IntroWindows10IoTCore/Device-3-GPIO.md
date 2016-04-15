@@ -9,7 +9,7 @@ The individual GPIO (General Purpose IO) pins on the Raspberry Pi may be address
 
 ![](http://ms-iot.github.io/content/images/PinMappings/RP2_Pinout.png)
 
-<a name="Ex3Task1"></a>
+
 #### Task 1 - Programming the Device IO using the GPIO Controller ####
 
 Of course, you can hook an LED and resistor directly to one of the pins using a breadboard and jumper wires (in fact, we encourage you to try that during the Open Hack), but to keep things simple, we'll toggle the red LED on the GHI FEZ HAT that is already on your Raspberry Pi.

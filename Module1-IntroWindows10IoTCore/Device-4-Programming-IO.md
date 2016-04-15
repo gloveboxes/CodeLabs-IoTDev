@@ -7,7 +7,7 @@ The [GHI FEZ HAT](https://www.ghielectronics.com/catalog/product/500) allows for
 
 In this exercise, you'll again use the red LED, but using the GHI driver code, and turning it on and off with a timer rather than a button. In the following exercise you'll use the temperature and light sensors and the 2 RGB LEDs.
 
-<a name="Ex4Task1"></a>
+
 #### Task 1 - GPIO and lighting up an LED ####
 
 In this task, you'll add the **FEZ HAT driver** (using the NuGet package) so you can control the FEZ HAT's LED and make it blink, using the driver library. There are some differences with the code to light up the FEZ HAT LEDs. If you want to explore the "raw" GPIO approach, we have examples in the Open Hack lab. For our follow-up Azure work, it's important to familiarize with the HAT APIs. This is akin to using Arduino shields and their libraries vs. raw IO.

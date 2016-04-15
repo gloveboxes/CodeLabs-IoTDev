@@ -5,7 +5,7 @@
 The Raspberry Pi will be connected to the development PC through a wired Ethernet connection. 
 This connection is used both for deployment and debugging as well as passing through internet requests from the Raspberry Pi when [Internet Connection Sharing](http://ms-iot.github.io/content/en-US/win10/ConnectToDevice.htm) is enabled on the PC.
 
-<a name="Ex1Task1"></a>
+
 #### Task 1 - Identifying the device using IoT Core Dashboard ####
 
 In this task, you'll connect to your device and explore the web management interface.
@@ -34,7 +34,7 @@ In this task, you'll connect to your device and explore the web management inter
 
 1. For now, just explore and don't change any settings.
 
-<a name="Ex1Task2"></a>
+
 #### Task 2 - Verify the Windows IoT Remote Client connection  ####
 
 In this task, you will verify the "Windows IoT Core Remote Client" connection.
