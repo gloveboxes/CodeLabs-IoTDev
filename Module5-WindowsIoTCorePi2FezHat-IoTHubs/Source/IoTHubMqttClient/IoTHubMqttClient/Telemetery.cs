@@ -13,7 +13,7 @@ namespace IoTHubMqttClient {
         }
 
         public string Geo { get; set; }
-        public string Celcius { get; set; }
+        public string Celsius { get; set; }
         public string Humidity { get; set; }
         public string Light { get; set; }
         public string Utc { get; set; }
@@ -21,7 +21,7 @@ namespace IoTHubMqttClient {
 
 
         public byte[] ToJson(double celcius, double light, double humidity) {
-            Celcius = RoundMeasurement(celcius, 2);
+            Celsius = RoundMeasurement(celcius, 2);
             Light = RoundMeasurement(light, 2).ToString();  
             Humidity = RoundMeasurement(humidity, 2).ToString(); 
             Utc = DateTime.UtcNow.ToString("o");
