@@ -39,9 +39,9 @@ The following is required to complete this module:
 [9]: https://github.com/Azure/azure-iot-sdks/releases
 [10]: SettingUpAzure.md
 
-Estimated time to complete Module 2: **60 minutes**
+Estimated time to complete Module: **60 minutes**
 
-##Exercises##
+##Exercises
 This module includes the following exercises:
 
 1. [Provisioning an Azure Account](AzureProvisioning.md) 
