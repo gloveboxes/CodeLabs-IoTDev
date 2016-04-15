@@ -35,14 +35,17 @@ namespace IoTHubMqttClient {
             client = new MqttClient(hubAddress, 8883, true, MqttSslProtocols.TLSv1_2);
             client.MqttMsgPublishReceived += Client_MqttMsgPublishReceived;
             client.Subscribe(new string[] { hubTopicSubscribe }, new byte[] { 0 });
-            client.Connect(hubName, hubUser, hubPass);
 
             var result = Task.Run(async () => {
-                while (true) {
-                    client.Publish(hubTopicPublish, temperature.ToJson(hat.GetTemperature()));
-                    client.Publish(hubTopicPublish, light.ToJson(hat.GetLightLevel()));
 
-                    await Task.Delay(10000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
+                while (true) {
+
+                    if (!client.IsConnected) { client.Connect(hubName, hubUser, hubPass); }
+                    if (client.IsConnected) {
+                        client.Publish(hubTopicPublish, temperature.ToJson(hat.GetTemperature()));
+                        client.Publish(hubTopicPublish, light.ToJson(hat.GetLightLevel()));
+                    }
+                    await Task.Delay(120000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                 }
             });
         }

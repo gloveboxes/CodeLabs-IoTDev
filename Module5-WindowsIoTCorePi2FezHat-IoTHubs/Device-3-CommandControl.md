@@ -66,11 +66,15 @@ Install-Package GHIElectronics.UWP.Shields.FEZHAT
                 client.Connect(hubName, hubUser, hubPass);
 
                 var result = Task.Run(async () => {
-                    while (true) {
-                        client.Publish(hubTopicPublish, temperature.ToJson(hat.GetTemperature()));
-                        client.Publish(hubTopicPublish, light.ToJson(hat.GetLightLevel()));
 
-                        await Task.Delay(30000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
+                    while (true) {
+
+                        if (!client.IsConnected) { client.Connect(hubName, hubUser, hubPass); }
+                        if (client.IsConnected) {
+                            client.Publish(hubTopicPublish, temperature.ToJson(hat.GetTemperature()));
+                            client.Publish(hubTopicPublish, light.ToJson(hat.GetLightLevel()));
+                        }
+                        await Task.Delay(20000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                     }
                 });
             }
