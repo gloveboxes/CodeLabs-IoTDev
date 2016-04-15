@@ -40,8 +40,8 @@ namespace IoTHubMqttClient {
             var result = Task.Run(async () => {
                 while (true) {
 
-                    client.Publish(hubTopicPublish, temperature.ToJSON(hat.GetTemperature()));
-                    client.Publish(hubTopicPublish, light.ToJSON(hat.GetLightLevel()));
+                    client.Publish(hubTopicPublish, temperature.ToJson(hat.GetTemperature()));
+                    client.Publish(hubTopicPublish, light.ToJson(hat.GetLightLevel()));
 
                     await Task.Delay(10000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                 }

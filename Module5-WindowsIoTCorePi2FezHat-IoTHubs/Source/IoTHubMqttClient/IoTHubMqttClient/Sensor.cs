@@ -22,7 +22,7 @@ namespace IoTHubMqttClient {
         public string value { get; set; }
         public string timecreated { get; set; }
 
-        public byte[] ToJSON(double measurement) {
+        public byte[] ToJson(double measurement) {
             value = measurement.ToString();
             timecreated = DateTime.UtcNow.ToString("o");     
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
