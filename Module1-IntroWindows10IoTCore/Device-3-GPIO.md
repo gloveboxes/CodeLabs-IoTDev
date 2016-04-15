@@ -92,4 +92,4 @@ To do this, we'll create a new project.
 1. Again from the "Windows IoT Remote Client" and using the mouse, click the button on and off and look at the red LED on the board. If you want to see the debugging in action, place a breakpoint in both of the event handlers and step through when you click the button.
 
 >[Home](README.md) </br>
->Next Lab [Creating and deploying your first "Hello World" app](Device-2-HelloWorld.md)
+>Next Lab [Programming IO](Device-4-Programming-IO.md)
