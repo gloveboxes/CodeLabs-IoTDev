@@ -45,7 +45,7 @@ Estimated time to complete Module: **60 minutes**
 This module includes the following exercises:
 
 1. [Provisioning an Azure Account](AzureProvisioning.md) 
-1. [Provisioning an IoT Hub](AzureIoTHub.md)
+1. [Provisioning an Azure IoT Hub](AzureIoTHub.md)
 1. [Connecting and configuring your device](DeviceConfig.md)
 1. [Streaming telemetry from a device](DeviceStreaming.md)
 1. [Analytics with Power Bi](AnalyticsWithPowerBi.md)

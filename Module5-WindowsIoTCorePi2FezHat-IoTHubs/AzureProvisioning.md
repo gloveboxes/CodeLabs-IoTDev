@@ -17,4 +17,4 @@ Valid credit card information is required for identity verification purposes onl
 
 
 >[Home](README.md) </br>
->Next Lab [Provisioning an IoT Hub](AzureIoTHub.md)
+>Next Lab [Provisioning an Azure IoT Hub](AzureIoTHub.md)
