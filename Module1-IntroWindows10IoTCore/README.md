@@ -56,8 +56,7 @@ This module includes the following exercises:
 1. [Creating and deploying your first "Hello World" app](Device-2-HelloWorld.md)
 1. [Introduction to GPIO aka General Purpose IO](Device-3-GPIO.md)
 1. [Programming IO](Device-4-Programming-IO.md)
-1. [Blinky LEDs](Device-5-Blinky.md)
-1. [Advanced GPIO](Device-6-Advanced-GPIO.md)
+1. [Advanced GPIO](Device-5-Advanced-GPIO.md)
 
 
 
