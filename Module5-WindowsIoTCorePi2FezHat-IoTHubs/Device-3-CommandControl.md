@@ -40,7 +40,8 @@ Install-Package GHIElectronics.UWP.Shields.FEZHAT
 
             private FEZHAT hat;
 
-            Telemetry telemetry = new Telemetry("Sydney");
+            Telemetry temperature = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5013", "Temperature", "C");
+            Telemetry light = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5013", "Light", "L");
 
             // https://azure.microsoft.com/en-us/documentation/articles/iot-hub-mqtt-support/
             const string hubAddress = "MakerDen.azure-devices.net";
@@ -64,14 +65,13 @@ Install-Package GHIElectronics.UWP.Shields.FEZHAT
                 client.Subscribe(new string[] { hubTopicSubscribe }, new byte[] { 0 });
 
                 var result = Task.Run(async () => {
-
                     while (true) {
-
                         if (!client.IsConnected) { client.Connect(hubName, hubUser, hubPass); }
                         if (client.IsConnected) {
-                            client.Publish(hubTopicPublish, telemetry.ToJson(hat.GetTemperature(), hat.GetLightLevel(), 50)); // no build in humidity sensor - just assume 50%
+                            client.Publish(hubTopicPublish, temperature.ToJson(hat.GetTemperature()));
+                            client.Publish(hubTopicPublish, light.ToJson(hat.GetLightLevel()));
                         }
-                        await Task.Delay(30000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
+                        await Task.Delay(60000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                     }
                 });
             }
