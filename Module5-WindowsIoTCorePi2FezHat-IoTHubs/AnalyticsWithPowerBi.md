@@ -17,7 +17,7 @@ If you don't have a Power BI account already, you will need to create one (a fre
 
 1. Go to the [Power BI website](https://powerbi.microsoft.com/) and follow the sign-up process.
 
-	> **Note:** At the moment this lab was written, only users with corporate email accounts are allowed to sign up. Free consumer email accounts (like Outlook, Hotmail, Gmail, Yahoo, etc.) can't be used.
+	**Note:** At the moment this lab was written, only users with corporate email accounts are allowed to sign up. Free consumer email accounts (like Outlook, Hotmail, Gmail, Yahoo, etc.) can't be used.
 
 2. You will be asked to enter your email address. Then a confirmation email will be sent. After following the confirmation link, a form to enter your personal information will be displayed. Complete the form and click Start.
 
