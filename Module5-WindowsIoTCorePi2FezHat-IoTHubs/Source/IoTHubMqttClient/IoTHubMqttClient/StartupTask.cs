@@ -41,7 +41,7 @@ namespace IoTHubMqttClient {
 
                     if (!client.IsConnected) { client.Connect(hubName, hubUser, hubPass); }
                     if (client.IsConnected) {
-                        client.Publish(hubTopicPublish, telemetry.ToJson(hat.GetTemperature(), hat.GetLightLevel(), 50)); // no build in humidity sensor - just assume 50%
+                        client.Publish(hubTopicPublish, telemetry.ToJson(hat.GetTemperature(), hat.GetLightLevel(), 50, 1000)); // no build in humidity sensor - just assume 50%
                     }
                     await Task.Delay(60000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                 }

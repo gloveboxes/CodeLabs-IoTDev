@@ -15,15 +15,17 @@ namespace IoTHubMqttClient {
         public string Geo { get; set; }
         public string Celsius { get; set; }
         public string Humidity { get; set; }
+        public string HPa { get; set; }
         public string Light { get; set; }
         public string Utc { get; set; }
         public int Id { get; set; }
 
 
-        public byte[] ToJson(double celcius, double light, double humidity) {
+        public byte[] ToJson(double celcius, double light, double humidity, double hPa) {
             Celsius = RoundMeasurement(celcius, 2);
             Light = RoundMeasurement(light, 2).ToString();  
-            Humidity = RoundMeasurement(humidity, 2).ToString(); 
+            Humidity = RoundMeasurement(humidity, 2).ToString();
+            HPa = RoundMeasurement(hPa, 0).ToString();
             Utc = DateTime.UtcNow.ToString("o");
             Id++;
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
