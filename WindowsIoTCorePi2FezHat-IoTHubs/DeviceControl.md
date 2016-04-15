@@ -1,4 +1,5 @@
-<a name="Task4">
+[Previous Lab -> Analytics with Power Bi](AnalyticsWithPowerBi.md)
+
 ## Sending commands to your devices
 Azure IoT Hub is a service that enables reliable and secure bi-directional communications between millions of IoT devices and an application back end. In this section you will see how to send cloud-to-device messages to your device to command it to change the color of one of the FEZ HAT leds, using the Device Explorer app as the back end.
 
@@ -99,3 +100,5 @@ Azure IoT Hub is a service that enables reliable and secure bi-directional commu
 7. After a few seconds the message will be processed by the device and the LED will turn on in the color you selected. The feedback will also be reflected in the Device Explorer screen after a few seconds.
 
 	![cloud-to-device message received](Images/cloud-to-device-message-received.png?raw=true)
+
+[Home](README.md)

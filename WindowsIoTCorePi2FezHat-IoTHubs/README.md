@@ -47,8 +47,8 @@ This module includes the following exercises:
 1. [Provisioning an IoT Hub](AzureIoTHub.md)
 1. [Connecting a device to Visual Studio](DeviceConfig.md)
 1. [Streaming Telemetry from a device](DeviceTelemetryStreaming.md)
-1. [Controlling a device from IoT Hub](DeviceControl.md)
 1. [Analytics with Power Bi](AnalyticsWithPowerBi.md)
+1. [Controlling a device from IoT Hub](DeviceControl.md)
 
 
 Estimated time to complete this module: **60 minutes**

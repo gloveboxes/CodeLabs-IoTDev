@@ -1,4 +1,4 @@
-[Home](readme.md)
+[Home](README.md)
 
 ### Setting up your Azure Account
 
@@ -15,4 +15,4 @@ There are currently two free trail offers – either good for the purposes of th
 Valid credit card information is required for identity verification purposes only. Your credit card will not be charged for this offer unless you explicitly remove the spending limit.
 
 
-[[Next Lab ->Provisioning an IoT Hub](AzureIoTHub.md))
+[Next Lab ->Provisioning an IoT Hub](AzureIoTHub.md))
