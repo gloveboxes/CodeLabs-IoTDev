@@ -1,4 +1,5 @@
-[Previous Lab -> Provisioning an IoT Hub](AzureIoTHub.md)
+- [Home](README.md)
+- [Previous Lab -> Provisioning an IoT Hub](AzureIoTHub.md)
 
 ### Exercise 1: Connecting and configuring your device ###
 
@@ -49,4 +50,5 @@ Minimise the remote client application when you have verified that it is working
 
 ![Windows IoT Remote Client](Images/windows-iot-remote-client.png?raw=true "Windows IoT Remote Client")
 
-[Next Lab -> Streaming Telemetry from a device](DeviceTelemetryStreaming.md)
+- [Home](README.md)
+- [Next Lab -> Streaming Telemetry from a device](DeviceTelemetryStreaming.md)
