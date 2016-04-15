@@ -67,7 +67,6 @@ Install-Package GHIElectronics.UWP.Shields.FEZHAT
 
                 var result = Task.Run(async () => {
                     while (true) {
-
                         client.Publish(hubTopicPublish, temperature.ToJson(hat.GetTemperature()));
                         client.Publish(hubTopicPublish, light.ToJson(hat.GetLightLevel()));
 
