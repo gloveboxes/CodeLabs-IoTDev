@@ -1,5 +1,5 @@
 >[Home](README.md) </br>
->[Previous Lab -> Connecting and configuring your device](DeviceConfig.md)
+>Previous Lab [Connecting and configuring your device](DeviceConfig.md)
 
 #### Streaming telemetry data to the Azure IoT hub ####
 
@@ -96,4 +96,4 @@ This task uses an existing Universal application that will be deployed to your R
     **Note**: If you navigate back to your IoT Hub blade in the Azure Portal, it may take a couple minutes before the message count is updated to reflect the device activity under **Usage**.
 
 >[Home](README.md) </br>
->[Next Lab -> Analytics with Power Bi](AnalyticsWithPowerBi.md)
+>Next Lab [Analytics with Power Bi](AnalyticsWithPowerBi.md)
