@@ -1,5 +1,5 @@
 >[Home](README.md) </br>
->[Previous Lab -> Connecting a device to Visual Studio](DeviceConfig.md)
+>[Previous Lab -> Connecting and configuring your device](DeviceConfig.md)
 
 #### Streaming telemetry data to the Azure IoT hub ####
 

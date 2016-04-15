@@ -26,7 +26,7 @@ The following is required to complete this module:
 
 
 
-> **Note:** The source code for this lab is available on [GitHub](/Module1-IntroWindows10IoTCore/Source).
+**Note:** The source code for this lab is available on [GitHub](/Module1-IntroWindows10IoTCore/Source).
 
 [1]: https://msdn.microsoft.com/library/windows/apps/xaml/dn706236.aspx
 [2]: https://www.visualstudio.com/products/visual-studio-community-vs
@@ -45,8 +45,8 @@ This module includes the following exercises:
 
 1. [Provisioning an Azure Account](AzureProvisioning.md) 
 1. [Provisioning an IoT Hub](AzureIoTHub.md)
-1. [Connecting a device to Visual Studio](DeviceConfig.md)
-1. [Streaming Telemetry from a device](DeviceTelemetryStreaming.md)
+1. [Connecting and configuring your device](DeviceConfig.md)
+1. [Streaming telemetry from a device](DeviceStreaming.md)
 1. [Analytics with Power Bi](AnalyticsWithPowerBi.md)
 1. [Controlling a device from IoT Hub](DeviceControl.md)
 
