@@ -97,4 +97,4 @@ In order to use remote debugging, your IoT Core device must first be connected t
 1. Restore the "Windows IoT RemoTe Client" app and you should see the output of your app running on the Raspberry Pi.
 
 >[Home](README.md) </br>
->Next Lab [Connecting and configuring your device](Device-1-Config.md)
+>Next Lab [Introduction to GPIO aka General Purpose IO](Device-3-GPIO.md)
