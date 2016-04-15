@@ -2,10 +2,12 @@
 >Previous Lab [Streaming Telemetry from a device](DeviceTelemetryStreaming.md)
 
 ## Consuming the IoT Hub data
-You have seen how to use the Device Explorer to peek the data being sent to the Azure IoT Hub. However, the Azure IoT suite offers many different ways to generate meaningful information from the data gathered by the devices. In the following sections you will explore two of them: You will see how the Azure Services Bus Messaging system can be used in a Website (part of the ConnectTheDots project), and how to use Azure Stream Analytics in combination with Microsoft Power BI to consume the data and to generate meaningful reports.
+You have seen how to use the Device Explorer to peek the data being sent to the Azure IoT Hub. 
+However, the Azure IoT suite offers many different ways to generate meaningful information from the data gathered by the devices. 
+In the following section you will use Azure Stream Analytics in combination with Microsoft Power BI to consume the data and to generate meaningful reports.
 
-<a name="Task32" />
-### Using Power BI
+
+### Analytics with Power BI
 
 One of the most interesting ways to use the information received from the connected device/s is to get near real-time analysis using the **Microsoft Power BI** tool. In this section you will see how to configure this tool to get an online dashboard showing summarized information about the different sensors.
 
