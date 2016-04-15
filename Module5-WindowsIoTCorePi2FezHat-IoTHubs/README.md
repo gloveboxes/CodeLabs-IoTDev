@@ -49,7 +49,7 @@ This module includes the following exercises:
 1. [Connecting and configuring your device](DeviceConfig.md)
 1. [Streaming telemetry from a device](DeviceStreaming.md)
 1. [Analytics with Power Bi](AnalyticsWithPowerBi.md)
-1. [Controlling a device from IoT Hub](DeviceControl.md)
+1. [Controlling a device from IoT Hub](Device-3-CommandControl.md)
 
 
 

@@ -235,4 +235,4 @@ Once the job starts it creates the Power BI datasource associated with the given
 	_Final Power BI Dashboard_
 
 >[Home](README.md) </br>
->Next Lab [Controlling a device from IoT Hub](DeviceControl.md)
+>Next Lab [Controlling a device from IoT Hub](Device-3-CommandControl.md)
