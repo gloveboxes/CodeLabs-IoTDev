@@ -31,7 +31,7 @@ namespace IoTHubMqttClient {
         public int Id { get; set; }
 
         public byte[] ToJson(double measurement) {
-            value = measurement.ToString();
+            value = RoundMeasurement(measurement, 2).ToString();
             timecreated = CorrectedTime().ToString("o");
             Id = ++msgCount;
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
@@ -53,7 +53,9 @@ namespace IoTHubMqttClient {
             return CorrectedUtcTime;
         }
 
-
+        private string RoundMeasurement(double value, int places) {
+            return Math.Round(value, places).ToString();
+        }
 
 
         //public Telemetry(string geo) {
@@ -79,8 +81,6 @@ namespace IoTHubMqttClient {
         //    return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
         //}
 
-        //private string RoundMeasurement(double value, int places) {
-        //    return Math.Round(value, places).ToString();
-        //}
+
     }
 }

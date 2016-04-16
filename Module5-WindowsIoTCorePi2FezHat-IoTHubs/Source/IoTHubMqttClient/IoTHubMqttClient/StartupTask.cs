@@ -13,7 +13,7 @@ namespace IoTHubMqttClient {
         private FEZHAT hat;
 
         Telemetry temperature = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5013", "Temperature", "C");
-        Telemetry light = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5013", "Light", "L");
+        Telemetry light = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5014", "Light", "L");
 
         // https://azure.microsoft.com/en-us/documentation/articles/iot-hub-mqtt-support/
         const string hubAddress = "MakerDen.azure-devices.net";
@@ -43,7 +43,7 @@ namespace IoTHubMqttClient {
                         client.Publish(hubTopicPublish, temperature.ToJson(hat.GetTemperature()));
                         client.Publish(hubTopicPublish, light.ToJson(hat.GetLightLevel()));
                     }
-                    await Task.Delay(30000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
+                    await Task.Delay(60000); // don't leave this running for too long at this rate as you'll quickly consume your free daily Iot Hub Message limit
                 }
             });
         }
