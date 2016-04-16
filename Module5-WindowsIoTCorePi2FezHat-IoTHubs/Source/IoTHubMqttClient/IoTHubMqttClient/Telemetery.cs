@@ -1,12 +1,20 @@
 ﻿using Newtonsoft.Json;
+using Porrey.Uwp.Ntp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace IoTHubMqttClient {
     public sealed class Telemetry {
+
+        static int msgCount = 0;
+        static bool NtpInitalised = false;
+        static TimeSpan utcOffset;
+        static DateTime CorrectedUtcTime => utcOffset == TimeSpan.Zero ? DateTime.UtcNow : DateTime.UtcNow - utcOffset;
+
         public Telemetry(string guid, string measureName, string unitofmeasure) {
             this.guid = guid;
             this.measurename = measureName;
@@ -20,12 +28,33 @@ namespace IoTHubMqttClient {
         public string unitofmeasure { get; set; }
         public string value { get; set; }
         public string timecreated { get; set; }
+        public int Id { get; set; }
 
         public byte[] ToJson(double measurement) {
             value = measurement.ToString();
-            timecreated = DateTime.UtcNow.ToString("o");
+            timecreated = CorrectedTime().ToString("o");
+            Id = ++msgCount;
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
         }
+
+        DateTime CorrectedTime() { // useful for locations particularly conferences with Raspberry Pi failes to sync time
+            try {
+                if (NtpInitalised) { return CorrectedUtcTime; }
+
+                NtpClient ntp = new NtpClient();
+
+                var time = ntp.GetAsync("au.pool.ntp.org").Result;
+                utcOffset = DateTime.UtcNow.Subtract(((DateTime)time).ToUniversalTime());
+
+                NtpInitalised = true;
+            }
+            catch { }
+
+            return CorrectedUtcTime;
+        }
+
+
+
 
         //public Telemetry(string geo) {
         //    this.Geo = geo;

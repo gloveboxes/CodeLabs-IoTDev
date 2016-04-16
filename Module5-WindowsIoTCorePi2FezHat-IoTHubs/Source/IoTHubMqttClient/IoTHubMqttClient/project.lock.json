@@ -24,6 +24,18 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "IoT.Ntp/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+        },
+        "compile": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        },
+        "runtime": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        }
+      },
       "M2Mqtt/4.3.0": {
         "type": "package",
         "compile": {
@@ -1947,6 +1959,18 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "IoT.Ntp/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+        },
+        "compile": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        },
+        "runtime": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        }
+      },
       "M2Mqtt/4.3.0": {
         "type": "package",
         "compile": {
@@ -3727,6 +3751,18 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "IoT.Ntp/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+        },
+        "compile": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        },
+        "runtime": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        }
+      },
       "M2Mqtt/4.3.0": {
         "type": "package",
         "compile": {
@@ -5468,6 +5504,18 @@
         },
         "runtime": {
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
+        }
+      },
+      "IoT.Ntp/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+        },
+        "compile": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        },
+        "runtime": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
         }
       },
       "M2Mqtt/4.3.0": {
@@ -7257,6 +7305,18 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "IoT.Ntp/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+        },
+        "compile": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        },
+        "runtime": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        }
+      },
       "M2Mqtt/4.3.0": {
         "type": "package",
         "compile": {
@@ -8998,6 +9058,18 @@
         },
         "runtime": {
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
+        }
+      },
+      "IoT.Ntp/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+        },
+        "compile": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        },
+        "runtime": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
         }
       },
       "M2Mqtt/4.3.0": {
@@ -10787,6 +10859,18 @@
           "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll": {}
         }
       },
+      "IoT.Ntp/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
+        },
+        "compile": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        },
+        "runtime": {
+          "lib/netcore/Porrey.Uwp.Ntp.dll": {}
+        }
+      },
       "M2Mqtt/4.3.0": {
         "type": "package",
         "compile": {
@@ -12528,6 +12612,15 @@
         "GHIElectronics.UWP.Shields.FEZHAT.nuspec",
         "content/Properties/GHIElectronics.UWP.Shields.FEZHAT.rd.xml",
         "lib/.NETCore50/GHIElectronics.UWP.Shields.FEZHAT.dll"
+      ]
+    },
+    "IoT.Ntp/1.0.0": {
+      "sha512": "zoQzuA/PDK0uHkMJlUHJYWQptKIelkRePhH9BSDtHL4dblbIqu5K+KbXRKE4Y9h4xMC6WFBmTxOta50PnBTfsw==",
+      "type": "package",
+      "files": [
+        "IoT.Ntp.1.0.0.nupkg.sha512",
+        "IoT.Ntp.nuspec",
+        "lib/netcore/Porrey.Uwp.Ntp.dll"
       ]
     },
     "M2Mqtt/4.3.0": {
@@ -15726,6 +15819,7 @@
   "projectFileDependencyGroups": {
     "": [
       "GHIElectronics.UWP.Shields.FEZHAT >= 0.0.8",
+      "IoT.Ntp >= 1.0.0",
       "M2Mqtt >= 4.3.0",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.0.0",
       "Newtonsoft.Json >= 8.0.3"
