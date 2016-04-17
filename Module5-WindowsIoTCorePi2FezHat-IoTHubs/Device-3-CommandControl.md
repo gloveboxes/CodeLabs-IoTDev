@@ -30,6 +30,8 @@ Accept Universal Windows Application defaults and click Ok
 
 ##Completed
 
+    ````C#
+
     using GHIElectronics.UWP.Shields;
     using System;
     using System.Diagnostics;
@@ -104,3 +106,5 @@ Accept Universal Windows Application defaults and click Ok
             }
         }
     }
+    
+    ````
