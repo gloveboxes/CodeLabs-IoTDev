@@ -1,5 +1,5 @@
 >[Home](README.md) </br>
->Previous Lab [Connecting and configuring your device](DeviceConfig.md)
+>Previous Lab [Connecting and configuring your device](Device-1-Config.md)
 
 # Streaming telemetry data to the Azure IoT hub ####
 
