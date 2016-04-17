@@ -32,7 +32,7 @@ Accept Universal Windows Application defaults and click Ok
 
 Intro
 
-	```cs
+	````cs
     using GHIElectronics.UWP.Shields;
     using System;
     using System.Diagnostics;
