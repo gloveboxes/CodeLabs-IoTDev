@@ -36,7 +36,7 @@ Accept Universal Windows Application defaults and click Ok
 Intro
 
 
-    ````C#
+	````C# 
     
     using GHIElectronics.UWP.Shields;
     using System;
@@ -112,7 +112,7 @@ Intro
             }
         }
     }    
-	```
+    ````
     
     
     
