@@ -115,22 +115,6 @@ namespace IoTHubMqttClient {
 
 ````
     
-    
-    
-	````C#
-	// send data to IoT Hub
-	var jsonMessage = string.Format("{{ displayname:null, location:\"USA\", organization:\"Fabrikam\", guid: \"41c2e437-6c3d-48d0-8e12-81eab2aa5013\", timecreated: \"{0}\", measurename: \"Temperature\", unitofmeasure: \"C\", value:{1}}}",
-		 DateTime.UtcNow.ToString("o"),
-		 temp);
-
-	this.SendMessage(jsonMessage);
-
-	jsonMessage = string.Format("{{ displayname:null, location:\"USA\", organization:\"Fabrikam\", guid: \"41c2e437-6c3d-48d0-8e12-81eab2aa5013\", timecreated: \"{0}\", measurename: \"Light\", unitofmeasure: \"L\", value:{1}}}",
-		 DateTime.UtcNow.ToString("o"),
-		 light);
-
-	this.SendMessage(jsonMessage);
-	````
 
 
 >[Home](README.md)
