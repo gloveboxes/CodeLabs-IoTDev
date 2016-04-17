@@ -17,11 +17,15 @@ Visual Studio -> New Project -> Windows IoT Core
 
 ![Create New IoT Core Background Application](Images/mqtt-background-application-new.png?raw=true)
 
+Accept Universal Windows Application defaults and click Ok
+
 ![New Universal Project Defaults](Images/mqtt-new-universal-project-defaults.png?raw=true)
 
-Install-Package M2Mqtt 
-Install-Package Newtonsoft.Json 
-Install-Package GHIElectronics.UWP.Shields.FEZHAT
+
+
+- Install-Package M2Mqtt 
+- Install-Package Newtonsoft.Json 
+- Install-Package GHIElectronics.UWP.Shields.FEZHAT
 
 
 ##Completed
@@ -41,7 +45,7 @@ Install-Package GHIElectronics.UWP.Shields.FEZHAT
             private FEZHAT hat;
 
             Telemetry temperature = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5013", "Temperature", "C");
-            Telemetry light = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5013", "Light", "L");
+            Telemetry light = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5014", "Light", "L");
 
             // https://azure.microsoft.com/en-us/documentation/articles/iot-hub-mqtt-support/
             const string hubAddress = "MakerDen.azure-devices.net";

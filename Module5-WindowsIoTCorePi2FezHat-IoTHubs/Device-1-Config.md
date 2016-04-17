@@ -51,4 +51,4 @@ Minimise the remote client application when you have verified that it is working
 ![Windows IoT Remote Client](Images/windows-iot-remote-client.png?raw=true "Windows IoT Remote Client")
 
 >[Home](README.md) </br>
->Next Lab [Streaming telemetry from a device](DeviceStreaming.md)
+>Next Lab [Streaming telemetry from a device](Device-2-Streaming.md)

@@ -48,4 +48,4 @@ You must register your device in order to be able to send and receive informatio
 	> **Note:** The device identities registration can be automated using the Azure IoT Hubs SDK. An example of how to do that can be found [here](https://azure.microsoft.com/en-us/documentation/articles/iot-hub-csharp-csharp-getstarted/#create-a-device-identity).
 
 >[Home](README.md) </br>
->Next Lab [Connecting a device to Visual Studio](DeviceConfig.md)
+>Next Lab [Connecting a device to Visual Studio](Device-1-Config.md)
