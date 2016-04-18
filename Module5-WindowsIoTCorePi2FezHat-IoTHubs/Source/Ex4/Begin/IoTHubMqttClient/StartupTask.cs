@@ -8,14 +8,15 @@ using Windows.ApplicationModel.Background;
 
 namespace IoTHubMqttClient {
     public sealed class StartupTask : IBackgroundTask {
+
+        SecurityManager cm = new SecurityManager("{Azure IoT Hub Device Connection String}");
+
         BackgroundTaskDeferral deferral;
 
         private FEZHAT hat;
 
         Telemetry temperature = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5013", "Temperature", "C");
         Telemetry light = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5014", "Light", "L");
-
-        SecurityManager cm = new SecurityManager("HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPiSC;SharedAccessKey=z5c+MtYY5zMy7wj3SDiRMpZC7W+UiOkaKTxh/5kP6+c=");
 
         string hubUser;
         string hubTopicPublish;
@@ -53,23 +54,7 @@ namespace IoTHubMqttClient {
             string message = System.Text.Encoding.UTF8.GetString(e.Message).ToUpperInvariant();
             Debug.WriteLine($"Command Received: {message}");
 
-            switch (message) {
-                case "RED":
-                    hat.D2.Color = new FEZHAT.Color(255, 0, 0);
-                    break;
-                case "GREEN":
-                    hat.D2.Color = new FEZHAT.Color(0, 255, 0);
-                    break;
-                case "BLUE":
-                    hat.D2.Color = new FEZHAT.Color(0, 0, 255);
-                    break;
-                case "OFF":
-                    hat.D2.TurnOff();
-                    break;
-                default:
-                    System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", message);
-                    break;
-            }
+            // Add Azure IoT Hub MQTT Command and Control support here
         }
     }
 }

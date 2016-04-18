@@ -8,14 +8,15 @@ using Windows.ApplicationModel.Background;
 
 namespace IoTHubMqttClient {
     public sealed class StartupTask : IBackgroundTask {
+
+        SecurityManager cm = new SecurityManager("{Azure IoT Hub Device Connection String}");
+
         BackgroundTaskDeferral deferral;
 
         private FEZHAT hat;
 
         Telemetry temperature = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5013", "Temperature", "C");
-        Telemetry light = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5014", "Light", "L");
-
-        SecurityManager cm = new SecurityManager("HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPiSC;SharedAccessKey=z5c+MtYY5zMy7wj3SDiRMpZC7W+UiOkaKTxh/5kP6+c=");
+        Telemetry light = new Telemetry("41c2e437-6c3d-48d0-8e12-81eab2aa5014", "Light", "L");        
 
         string hubUser;
         string hubTopicPublish;
