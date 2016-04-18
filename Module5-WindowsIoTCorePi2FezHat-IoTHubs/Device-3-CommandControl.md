@@ -137,11 +137,11 @@ namespace IoTHubMqttClient {
 
 ###Deploy your app to the Raspberry Pi
 
-1. Press **F5** to run and deploy the app to the device.
-2. Once it's loaded, from Devive Explorer go to the Messages To Device tab, 
-    - select your device, 
-    - check the Monitor Feedback Endpoint option 
-    - and write your command in the Message field (red, green or blue). Click on Send to send the command to your Raspberry Pi
+1. Press **F5** to deploy and run the app on the device.
+2. Once it's loaded, from **Device Explorer** go to the **Messages To Device tab**, 
+    - Select your device
+    - Check the Monitor Feedback Endpoint option 
+    - Write your command in the Message field (red, green or blue). Click on Send to send the command to your Raspberry Pi
 3. Try putting a break point in the Client_MqttMsgPublishReceived method, the break point will be hit when the code receives a message
 
     ![Sending cloud-to-device message](Images/sending-cloud-to-device-message.png?raw=true)
