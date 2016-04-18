@@ -32,10 +32,14 @@ In this task, you'll connect to your device and explore the web management inter
 
 	_Windows Device Portal_
 
-1. For now, just explore and don't change any settings.
+1. From the Home Tab check ensure your Time zone is set correctly and check that the date and time are correct.
+If you need to change the Time zone you will need to reboot the Raspberry Pi.
+
+1. **Enable Windows IoT Remote Server**. From the Remote tab ensure Enable Windows IoT Remote Server is enabled.
 
 
-#### Task 2 - Verify the Windows IoT Remote Client connection  ####
+
+####Task 2 - Verify the Windows IoT Remote Client connection
 
 In this task, you will verify the "Windows IoT Core Remote Client" connection.
 
