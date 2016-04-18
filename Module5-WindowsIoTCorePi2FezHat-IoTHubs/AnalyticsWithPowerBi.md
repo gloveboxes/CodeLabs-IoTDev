@@ -62,7 +62,7 @@ Before the information can be delivered to **Power BI**, it must be processed by
 ![Create Azure Stream Analytics Job](Images/azure-create-stream-analytics-job.png) 
 
 
-	1. Click "Create a new Stream Analytics job".
+	1. Click "Create a new Stream Analytics job" if this is your first job, or click the plus sign to add an additional job.
 	2. Complete the form
 		- JOB NAME: iot-stream-analytics or something similar
 		- REGION: Suggest selecting the region closest to your IoT Hub
@@ -156,7 +156,7 @@ Now that the job is configured, the **START** button is enabled. Click the butto
 
 Once the job starts it creates the Power BI datasource associated with the given subscription.
 
-** NOTE: Starting a Stream Analytics job will start to consume your Azure Credits. **
+**NOTE: Starting a Stream Analytics job will start to consume your Azure Credits.**
 
 
 ### Task 8 - Setting up the Power BI dashboard
