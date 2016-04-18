@@ -21,7 +21,7 @@ This solution takes advantage of 3 Nuget packages that have already been install
 Steps to complete
 
 1. From **Device Explorer** -> **Management Tab** -> **Right Mouse click your device** -> **Select Copy Connection String for selected device**
-2. Modify the SecurityManager in the **StartupTask.cs** class, replace the placeholder value with the **device connection string** you just copied in the previous step (note that the curly braces { } 
+2. Modify the _SecurityManager_ in the **StartupTask.cs** class, replace the placeholder value with the **device connection string** you just copied in the previous step (note that the curly braces { } 
 are _NOT_ part of the connection string and should be _removed_ when you paste in your connection string).  
 
 ````C#
@@ -138,7 +138,7 @@ namespace IoTHubMqttClient {
 ###Deploy your app to the Raspberry Pi
 
 1. Press **F5** to deploy and run the app on the device.
-2. Once it's loaded, from **Device Explorer** go to the **Messages To Device tab**, 
+2. Once the app has started on the Raspberry Pi start the **Device Explorer** go to the **Messages To Device tab**, 
     - Select your device
     - Check the Monitor Feedback Endpoint option 
     - Write your command in the Message field (red, green or blue). Click on Send to send the command to your Raspberry Pi
@@ -150,6 +150,7 @@ namespace IoTHubMqttClient {
 
 	![cloud-to-device message received](Images/cloud-to-device-message-received.png?raw=true)
 
+Congratulations, all done!
 
 
 >[Home](README.md)
