@@ -17,7 +17,10 @@ In this task, you'll connect to your device and explore the web management inter
 
 	_Windows 10 IoT Core Dashboard_
 
-> **Note:** You can also launch the _Device Portal_ by browsing the _IP address_ and adding **:8080**.
+If your device does not show up in the list it is almost certainly because the network connection between your PC and the Raspberry Pi is public and Device Discovery is not enabled. 
+See [How to change Windows 10 network location from Public to Private](https://tinkertry.com/how-to-change-windows-10-network-type-from-public-to-private).
+
+> **Note:** As an easy fall back solution you can also launch the _Device Portal_ by browsing to the default device name **http://minwinpc:8080**.
 
 
 1. In the credentials dialog, use the default username and password. Username: _Administrator_ Password: _p@ssw0rd_
@@ -51,7 +54,7 @@ Minimise the remote client application when you have verified that it is working
 
 ![Windows IoT Remote Client](Images/windows-iot-remote-client.png?raw=true "Windows IoT Remote Client")
 
-See [Remote Display Experience]() for more information and Troubleshooting.
+See [Remote Display Experience](https://developer.microsoft.com/en-us/windows/iot/win10/remotedisplay) for more information and Troubleshooting.
 
 >[Home](README.md) </br>
 >[Next Lab -> Creating and deploying your first "Hello World" app](Device-2-HelloWorld.md)
