@@ -8,6 +8,7 @@ This connection is used both for deployment and debugging as well as passing thr
 
 #### Task 1 - Identifying the device using IoT Core Dashboard ####
 
+
 In this task, you'll connect to your device and explore the web management interface.
 
 
