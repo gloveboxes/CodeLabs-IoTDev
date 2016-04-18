@@ -49,18 +49,28 @@ To create a new Consumer Group for the IoT Hub that will be used by the Stream A
 
 ### Task 3 - Setting the data source
 
-In order to feed the Power BI reports with the information gathered by the hats and to get that information in near real-time, **Power BI** supports **Azure Stream Analytics** outputs as data source. The following section will show how to configure the Stream Analytics job created in the Setup section to take the input from the IoT Hub and push that summarized information to Power BI.
+In order to feed the Power BI reports with the information gathered by the hats and to get that information in near real-time, **Power BI** supports **Azure Stream Analytics** outputs as data source. 
+The following section will show how to configure the Stream Analytics job created in the Setup section to take the input from the IoT Hub and push that summarized information to Power BI.
 
 
 ### Task 4 - Stream Analytics Input Setup
 
 Before the information can be delivered to **Power BI**, it must be processed by a **Stream Analytics Job**. To do so, an input for that job must be provided. As the Raspberry devices are sending information to an IoT Hub, it will be set as the input for the job.
 
-1. Go to the classic [Azure management portal](Stream Analytics Input ) (https://manage.windowsazure.com) and select the **Stream Analytics** service. There you will find the Stream Analytics job created during the _Azure services setup_. Click on the job to enter the Stream Analytics configuration screen.
+1. Go to the classic [Azure management portal](Stream Analytics Input ) (https://manage.windowsazure.com) and select the **Stream Analytics** service. 
 
-	![Stream Analytics configuration](Images/stream-analytics-configuration.png?raw=true)
+![Create Azure Stream Analytics Job](Images/azure-create-stream-analytics-job.png) 
 
-	_Stream Analytics Configuration_
+
+	1. Click "Create a new Stream Analytics job".
+	2. Complete the form
+		- JOB NAME: iot-stream-analytics or something similar
+		- REGION: Suggest selecting the region closest to your IoT Hub
+		- REGIONAL MONITORING STORAGE ACCOUNT: Likely "Create new storage account
+		- NEW STORAGE ACCOUNT NAME: Needs to be a globally unique name. Your app or alias name followed by the word storage eg gloveboxstorage
+	3. Click "CREATE STREAM ANALYTICS JOB
+	
+2. Once the Stream Analytics job is created click on it to configure.
 
 2. As you can see, the Start button is disabled since the job is not configured yet. To set the job input click on the **INPUTS** tab and then in the **Add an input** button.
 
@@ -119,20 +129,20 @@ Now that the job's inputs and outputs are already configured, the Stream Analyti
 
 	````SQL
 	SELECT
-		iothub.iothub.connectiondeviceid displayname,
+		iothub.connectiondeviceid displayname,
 		location,
 		guid,
 		measurename,
 		unitofmeasure,
-		Max(timecreated) timecreated,
+		Max(DateAdd(Hour, 10, EventEnqueuedUtcTime)) AS TimeCreated, -- AU EST UTC + 10
 		Avg(value) AvgValue
 	INTO
 		[PowerBI]
 	FROM
-		[TelemetryHUB] TIMESTAMP by timecreated
+		[TelemetryHUB] TIMESTAMP BY EventEnqueuedUtcTime
 	GROUP BY
-		iothub.iothub.connectiondeviceid, location, guid, measurename, unitofmeasure,
-		TumblingWindow(Second, 10)
+		iothub.connectiondeviceid, location, guid, measurename, unitofmeasure,
+		TumblingWindow(Second, 30)
 	````
 
 	The query takes the data from the input (using the alias defined when the input was created **TelemetryHUB**) and inserts into the output (**PowerBI**, the alias of the output) after grouping it using 10 seconds chunks.
@@ -145,6 +155,8 @@ Now that the job's inputs and outputs are already configured, the Stream Analyti
 Now that the job is configured, the **START** button is enabled. Click the button to start the job and then select the **JOB START TIME** option in the **START OUTPUT** popup. After clicking **OK** the job will be started.
 
 Once the job starts it creates the Power BI datasource associated with the given subscription.
+
+** NOTE: Starting a Stream Analytics job will start to consume your Azure Credits. **
 
 
 ### Task 8 - Setting up the Power BI dashboard
@@ -233,6 +245,9 @@ Once the job starts it creates the Power BI datasource associated with the given
 	![Final Power BI Dashboard](Images/final-power-bi-dashboard.png?raw=true)
 
 	_Final Power BI Dashboard_
+	
+	
+9. Try the Power Bi app available in the iOS App store, Google Play and Windows Store.
 
 >[Home](README.md) </br>
 >Next Lab [Controlling a device from IoT Hub](Device-3-CommandControl.md)
