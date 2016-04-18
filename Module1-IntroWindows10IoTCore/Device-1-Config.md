@@ -8,7 +8,6 @@ This connection is used both for deployment and debugging as well as passing thr
 
 #### Task 1 - Identifying the device using IoT Core Dashboard ####
 
-
 In this task, you'll connect to your device and explore the web management interface.
 
 
@@ -33,7 +32,9 @@ In this task, you'll connect to your device and explore the web management inter
 
 	_Windows Device Portal_
 
-1. For now, just explore and don't change any settings.
+1. From the **Home** Tab verify the Time Zone, date and time are correct. If you change the Time zone you will need to reboot.
+
+1. From the **Remote** tab verify that **Windows IoT Remote Server** enabled. If it is not, then enable it.
 
 
 #### Task 2 - Verify the Windows IoT Remote Client connection  ####
