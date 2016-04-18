@@ -96,8 +96,8 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NtpClient.cs" />
-    <Compile Include="Telemetery.cs" />
+    <Compile Include="SecurityManager.cs" />
+    <Compile Include="Telemetry.cs" />
     <Compile Include="StartupTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

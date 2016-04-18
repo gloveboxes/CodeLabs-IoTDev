@@ -21,6 +21,8 @@ namespace IoTHubMqttClient {
             this.unitofmeasure = unitofmeasure;
         }
 
+
+
         public string location => "USA";
         public string organisation => "Fabrikam";
         public string guid { get; set; }
@@ -30,12 +32,15 @@ namespace IoTHubMqttClient {
         public string timecreated { get; set; }
         public int Id { get; set; }
 
+
         public byte[] ToJson(double measurement) {
             value = RoundMeasurement(measurement, 2).ToString();
-            timecreated = CorrectedTime().ToString("o");
+       //     timecreated = CorrectedTime().ToString("o");
             Id = ++msgCount;
             return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
         }
+
+
 
         DateTime CorrectedTime() { // useful for locations particularly conferences with Raspberry Pi failes to sync time
             try {
@@ -58,8 +63,9 @@ namespace IoTHubMqttClient {
         }
 
 
-        //public Telemetry(string geo) {
+        //public Telemetry(string geo, string deviceId) {
         //    this.Geo = geo;
+        //    this.Dev = deviceId;
         //}
 
         //public string Geo { get; set; }
@@ -68,16 +74,13 @@ namespace IoTHubMqttClient {
         //public string HPa { get; set; }
         //public string Light { get; set; }
         //public string Utc { get; set; }
-        //public int Id { get; set; }
+        //public string Dev { get; set; }
 
-
-        //public byte[] ToJson(double celcius, double light, double humidity, double hPa) {
-        //    Celsius = RoundMeasurement(celcius, 2);
-        //    Light = RoundMeasurement(light, 2).ToString();  
+        //public byte[] ToJson(double temperature, double light, double hpa, double humidity) {
+        //    Celsius = RoundMeasurement(temperature, 2).ToString();
+        //    Light = RoundMeasurement(light, 2).ToString();
+        //    HPa = RoundMeasurement(hpa, 0).ToString();
         //    Humidity = RoundMeasurement(humidity, 2).ToString();
-        //    HPa = RoundMeasurement(hPa, 0).ToString();
-        //    Utc = DateTime.UtcNow.ToString("o");
-        //    Id++;
         //    return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(this));
         //}
 
