@@ -9,31 +9,49 @@ Azure IoT Hub also supports a number of protocols including [AMQP](https://en.wi
 
 In this lab we are going to publish data to Azure IoT Hub over MQTT and subscript to command messages.
 
-We will use two NuGet Packages: -
+1. Open in Visual Studio the **IoTHubMqttClient.sln** solution located at **Source\Ex4\Begin** folder.
 
-1. The [M2Mqtt Client Library](https://m2mqtt.wordpress.com/using-mqttclient)
-2. The [Fez Hat Library](https://www.ghielectronics.com/docs/329/fez-hat-developers-guide)
-
-### Create a Headless Windows IoT Core Application
-
-Visual Studio -> New Project -> Windows IoT Core
-
-![Create New IoT Core Background Application](Images/mqtt-background-application-new.png?raw=true)
-
-Accept Universal Windows Application defaults and click Ok
-
-![New Universal Project Defaults](Images/mqtt-new-universal-project-defaults.png?raw=true)
+This solution takes advantage of 3 Nuget packages that have already been installed and referenced.
 
 
+1. The [M2Mqtt Client Library](https://m2mqtt.wordpress.com/using-mqttclient) (Install-Package M2Mqtt)
+2. The [Fez Hat Library](https://www.ghielectronics.com/docs/329/fez-hat-developers-guide) (Install-Package GHIElectronics.UWP.Shields.FEZHAT)
+3. The [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) library (Install-Package Newtonsoft.Json)
 
-- Install-Package M2Mqtt 
-- Install-Package Newtonsoft.Json 
-- Install-Package GHIElectronics.UWP.Shields.FEZHAT
+Steps to complete
+
+1. From Device Explorer -> Management Tab -> Right Mouse click you device -> Select Copy Connection String for selected device
+2. Modifify the following SecurityManager in the **StartupTask.cs** class, replace the placeholder value with the **device connection string** you've created in the previous task (note that the curly braces { } 
+are _NOT_ part of the connection string and should be _removed_ when you paste in your connection string).  
+
+````C#
+SecurityManager cm = new SecurityManager("{Azure IoT Hub Device Connection String}");
+````
 
 
-##Completed
+3. Add code to be execute when the device receives a message from Azure IoT Hub. The following code should be pasted in to the  **Client_MqttMsgPublishReceived** method in the **StartupTask.cs** class.
 
-Intro
+````C#
+switch (message) {
+    case "RED":
+        hat.D2.Color = new FEZHAT.Color(255, 0, 0);
+        break;
+    case "GREEN":
+        hat.D2.Color = new FEZHAT.Color(0, 255, 0);
+        break;
+    case "BLUE":
+        hat.D2.Color = new FEZHAT.Color(0, 0, 255);
+        break;
+    case "OFF":
+        hat.D2.TurnOff();
+        break;
+    default:
+        System.Diagnostics.Debug.WriteLine("Unrecognized command: {0}", message);
+        break;
+}
+````
+
+Your completed code should look like the following
 
 
 ````C#
@@ -116,7 +134,22 @@ namespace IoTHubMqttClient {
  
 
 ````
-    
+
+###Deploy your app to the Raspberry Pi
+
+1. Press **F5** to run and deploy the app to the device.
+2. Once it's loaded, from Devive Explorer go to the Messages To Device tab, 
+    - select your device, 
+    - check the Monitor Feedback Endpoint option 
+    - and write your command in the Message field (red, green or blue). Click on Send to send the command to your Raspberry Pi
+3. Try putting a break point in the Client_MqttMsgPublishReceived method, the break point will be hit when the code receives a message
+
+    ![Sending cloud-to-device message](Images/sending-cloud-to-device-message.png?raw=true)
+
+7. After a few seconds the message will be processed by the device and the LED will turn on in the color you selected. The feedback will also be reflected in the Device Explorer screen after a few seconds.
+
+	![cloud-to-device message received](Images/cloud-to-device-message-received.png?raw=true)
+
 
 
 >[Home](README.md)
