@@ -21,7 +21,7 @@ This solution takes advantage of 3 Nuget packages that have already been install
 Steps to complete
 
 1. From Device Explorer -> Management Tab -> Right Mouse click you device -> Select Copy Connection String for selected device
-2. Modifify the following SecurityManager in the **StartupTask.cs** class, replace the placeholder value with the **device connection string** you've created in the previous task (note that the curly braces { } 
+2. Modifify the following SecurityManager in the **StartupTask.cs** class, replace the placeholder value with the **device connection string** you just copied in the previous step (note that the curly braces { } 
 are _NOT_ part of the connection string and should be _removed_ when you paste in your connection string).  
 
 ````C#
