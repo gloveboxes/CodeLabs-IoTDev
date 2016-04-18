@@ -12,15 +12,13 @@ using Windows.Security.Cryptography.Core;
 
 namespace IoTHubMqttClient {
      public sealed class SecurityManager {
-        //const string connectionString = "HostName=glovebox-iot-hub.azure-devices.net;DeviceId=RPiSC;SharedAccessKey=z5c+MtYY5zMy7wj3SDiRMpZC7W+UiOkaKTxh/5kP6+c=";
-     //   string connectionString;
+
         public string hubAddress { get; private set; }
         public string hubName { get; private set; }
         string SharedAccessKey; 
 
-        public string hubPass { get { return GenerateSas(); } }
+        public string hubPass => GenerateSas(); 
 
-        private string sas;
         const char Base64Padding = '=';
         readonly HashSet<char> base64Table = new HashSet<char>{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O',
                                                                       'P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d',
