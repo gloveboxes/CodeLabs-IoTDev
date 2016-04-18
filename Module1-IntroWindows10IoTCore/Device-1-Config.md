@@ -51,5 +51,7 @@ Minimise the remote client application when you have verified that it is working
 
 ![Windows IoT Remote Client](Images/windows-iot-remote-client.png?raw=true "Windows IoT Remote Client")
 
+See [Remote Display Experience]() for more information and Troubleshooting.
+
 >[Home](README.md) </br>
 >[Next Lab -> Creating and deploying your first "Hello World" app](Device-2-HelloWorld.md)
